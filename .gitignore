@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Generated output. Source is cv.typ and letter.md, both tracked.
+# Regenerate with ./scripts/render-cv.sh <slug> and ./scripts/render-letter.sh <slug>
+applications/*/*.pdf
+
+# Obsidian workspace state. The notes themselves are tracked.
+Job-Hunting/.obsidian/workspace.json

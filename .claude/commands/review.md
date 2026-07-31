@@ -1,0 +1,28 @@
+---
+description: Any time: review a finished application before sending it
+argument-hint: <slug>
+---
+
+Run the `application-review` agent for: $ARGUMENTS
+
+Start with both scripts, always:
+
+```bash
+python3 scripts/check-style.py <slug>
+./scripts/check-fit.py <slug>
+```
+
+They decide what a machine can decide. Fix every FAIL or say why it is a deliberate exception.
+
+Then judge what they cannot:
+
+1. Does every posting requirement have a bullet against it? Name the bullet for each. **A requirement with nothing against it is the defect that keeps getting through.**
+2. Is anything on the CV the posting never asked for?
+3. Are two bullets saying one thing?
+4. Does the letter's opening survive the swap test?
+5. Is the emphasis right, given what this employer actually wants?
+6. Does anything claim more than `profile/` supports?
+
+Fix what you can, re-render, re-run the scripts. Report only what changed, what needs my decision, and any exception you kept.
+
+If it is clean, say so in one line.

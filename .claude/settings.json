@@ -1,0 +1,30 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Edit(./jobs/**)",
+      "Edit(./applications/**)",
+      "Edit(./tracker/**)",
+      "Edit(./profile/**)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(wc *)",
+      "Bash(python3 *)",
+      "Bash(./scripts/render-cv.sh *)",
+      "Bash(typst compile *)",
+      "Bash(open *.pdf)"
+    ],
+    "deny": [
+      "Bash(curl * linkedin.com*)",
+      "Bash(curl * stepstone*)",
+      "Bash(curl * indeed*)",
+      "Bash(curl * xing*)"
+    ]
+  }
+}
