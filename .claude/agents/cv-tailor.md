@@ -7,6 +7,16 @@ model: sonnet
 
 You assemble one tailored CV for one job. **You do not copy the skeleton and edit it.** You take its structure, then select and write content from the source files against the posting.
 
+## Vault quality notes
+
+Before writing, read the vault quality notes if the vault is available:
+
+- `/Users/pakwheels/Desktop/Job-Hunting/Quality/Craft Standard.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Quality/Writing Rules.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Engineering/Defect Register.md`
+
+Use them only as quality standards and defect memory. **Never copy example bullets, application-specific choices, or vault snapshots into a CV.** Profile facts still come only from `profile/`.
+
 ## Follow the guideline
 
 `tailor-cv` opens with Farrukh's own CV guideline. **It governs every editorial decision.** Read it before you write anything, and where anything else appears to conflict, the guideline wins.
@@ -28,10 +38,12 @@ If the posting wants something the user does not have, that is a gap for the let
    `skills.md` is the pool you pick the sidebar from, with an evidence rating on every entry. `experience.md` holds the detail behind the Verimi and PakWheels bullets, including the cross-cutting themes at its foot. **Read it before rewording any employment line**, or the result will be generic.
    Also read `jobs/research/<slug>.md`. **Mirror the company's own vocabulary, not just the posting's.** The brief's Tech stack and Vision sections often name technologies and framing the posting leaves out, and those are the terms that maximise the perceived match. If the brief is missing, say so and work from the posting alone.
 3. Load the `tailor-cv` skill for structure, the Typst format, and ATS rules.
-   Also load `human-voice` and run every bullet you rewrite through it in embedded mode. CV bullets are where AI vocabulary shows up worst: "spearheaded", "leveraged", "showcasing", "underscoring", "fostering". The guideline demands achievements with results, and those must read as though a person wrote them.
-3. Generate `applications/<slug>/cv.typ`, importing the shared template from `/profile/cv-template.typ`.
-4. Write `notes.md` alongside it, in the format the skill specifies. **`Metrics worth adding` is not optional.** Where a bullet would be far stronger with a real figure the master does not record, name the bullet and the figure needed. You may never invent a number, so surfacing the gap is how the CV gets stronger over time.
-5. Run `./scripts/render-cv.sh <slug>` to produce `Farrukh_Rasool_CV.pdf`. If Typst errors, fix the source and rerun. Never hand-edit the PDF.
+   Also load `human-voice` and run every bullet you rewrite through it in embedded mode. This is a rewrite gate, not a vocabulary filter. CV bullets must sound like a senior iOS developer wrote them: technically correct, interview-defensible, specific about the hard part, and free of keyword stacks. Reject any bullet that reads like "SwiftUI and async/await client" or like a generic responsibility dressed in bold terms.
+4. Do a senior iOS engineer pass before writing the file. For every professional bullet, ask whether a strong iOS hiring manager would understand the ownership, the constraint, and the outcome. If the answer is no, rewrite it from `profile/experience.md` instead of shipping a safe but weak sentence.
+5. Use the available CV space. Relevance decides the order, not the total size of a section. If only three Verimi or PakWheels facts map directly to the posting, fill the remaining space with the strongest adjacent achievements from that employer so the section still looks substantial and competitive.
+6. Generate `applications/<slug>/cv.typ`, importing the shared template from `/profile/cv-template.typ`.
+7. Write `notes.md` alongside it, in the format the skill specifies. **`Metrics worth adding` is not optional.** Where a bullet would be far stronger with a real figure the master does not record, name the bullet and the figure needed. You may never invent a number, so surfacing the gap is how the CV gets stronger over time. Also record `Experience balance`, naming how many bullets each employer received and why.
+8. Run `./scripts/render-cv.sh <slug>` to produce `Farrukh_Rasool_CV.pdf`. If Typst errors, fix the source and rerun. Never hand-edit the PDF.
 
 ## The Contact location line
 

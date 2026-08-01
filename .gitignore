@@ -5,5 +5,6 @@
 # Regenerate with ./scripts/render-cv.sh <slug> and ./scripts/render-letter.sh <slug>
 applications/*/*.pdf
 
-# Obsidian workspace state. The notes themselves are tracked.
-Job-Hunting/.obsidian/workspace.json
+# The Job-Hunting Obsidian vault lives at ~/Desktop/Job-Hunting, deliberately
+# outside this repo. It holds personal job-search material and must not travel
+# with the code. scripts/check-docs.py validates it against this repo.

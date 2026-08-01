@@ -5,6 +5,15 @@ argument-hint: <slug>
 
 Run the `application-review` agent for: $ARGUMENTS
 
+Read the vault quality notes if available:
+
+- `/Users/pakwheels/Desktop/Job-Hunting/Quality/Craft Standard.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Quality/Writing Rules.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Engineering/Defect Register.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Engineering/Bug Patterns.md`
+
+Use these as standards and defect memory only. Do not copy worked examples or past application content.
+
 Start with both scripts, always:
 
 ```bash

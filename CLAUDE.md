@@ -6,6 +6,14 @@ Personal job search pipeline for **Farrukh Rasool** (AI Engineer / iOS Developer
 
 A semi-automated pipeline. Discovery, scoring, and tailoring are automated. **Submission is manual, always.**
 
+## Obsidian vault
+
+The human-readable vault lives at `~/Desktop/Job-Hunting`. It records explanations, decisions, defects and quality standards.
+
+The vault is **not** a source of CV facts or reusable CV bullets. It can contain worked examples and old applications, so agents may use it only as quality memory. Anything the agents must obey belongs in this repo: `.claude/skills`, `.claude/agents`, `.claude/commands` or `scripts/`.
+
+Use `/vault-sync` when a vault lesson should be checked against the executable pipeline.
+
 ## Hard rule: no automated submission
 
 Do not build, suggest, or run browser automation against LinkedIn, StepStone, Xing, Indeed, or any employer portal to submit applications. LinkedIn's User Agreement prohibits automated access, and enforcement is real. A restricted account during an active job search is a much larger loss than the time saved.

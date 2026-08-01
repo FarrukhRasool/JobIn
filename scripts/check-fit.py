@@ -98,7 +98,7 @@ def main():
                 print("          SIDEBAR overflows. Page two has no navy panel, so this")
                 print("          text is WHITE ON WHITE and invisible. Languages goes first.")
                 print("          Cut or merge skill rows. Do NOT cut main-column content.")
-            return
+            sys.exit(1)
 
         w, h, nch, rows = decode_png(pages[0])
         last = last_ink_row(w, h, nch, rows, SIDEBAR_FRACTION, dark=True)
@@ -106,8 +106,9 @@ def main():
         print(f"free      {free:.0f} mm at the foot of the main column")
         if free > FREE_MM_THRESHOLD:
             print(f"UNDERFILL {free:.0f} mm unused. ADD CONTENT BACK.")
-            print("          Education bullets first, then an experience bullet.")
+            print("          Balance paid experience first, then add adjacent achievements.")
             print("          See the fit procedure in .claude/skills/tailor-cv/SKILL.md.")
+            sys.exit(1)
         else:
             print("fit       ok")
 

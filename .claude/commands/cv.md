@@ -9,7 +9,16 @@ Read `jobs/scored/<slug>.md`. If it has no score block, stop and tell me to run 
 
 Also read `jobs/research/<slug>.md` and mirror the company's own vocabulary, not only the posting's. The brief routinely names technologies the posting omits.
 
+Read the vault quality notes if available:
+
+- `/Users/pakwheels/Desktop/Job-Hunting/Quality/Craft Standard.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Quality/Writing Rules.md`
+- `/Users/pakwheels/Desktop/Job-Hunting/Engineering/Defect Register.md`
+
+Use the vault only as quality standard and defect memory. Do not copy example bullets or past application choices from it.
+
 Load the `tailor-cv` skill for structure, the Typst format, and ATS rules.
+Also load `human-voice` and use it as an embedded rewrite gate for CV bullets. Then run the senior iOS engineer pass from `tailor-cv`: every professional bullet must be technically precise, interview-defensible, and strong enough for a hiring manager to ask about.
 
 ## Non-negotiable
 
@@ -18,6 +27,8 @@ Load the `tailor-cv` skill for structure, the Typst format, and ATS rules.
 **Assemble, do not copy.** The skeleton's sample lines exist so it renders. Reusing them means the CV was not tailored.
 
 Pick the skills sidebar from `profile/skills.md`, which rates the evidence behind each one. Read `profile/experience.md` before rewording any Verimi or PakWheels bullet, since the master's one-liners are too thin to tailor from alone.
+
+Use the available space. Relevance decides the order of bullets, not whether an employer section becomes thin. If only three facts are exact matches, add the strongest adjacent achievements from that employer so Verimi and PakWheels still look substantial and balanced.
 
 Nothing unconfirmed goes into a CV: anything rated `ask` in `skills.md`, anything marked `TODO` in `experience.md`, anything marked `TODO:VERIFY` anywhere. Stop and ask me instead. If that blocks the whole document, say so plainly rather than working around it.
 

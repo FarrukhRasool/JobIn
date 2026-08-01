@@ -85,7 +85,7 @@
   role: "iOS Developer",
   bullets: (
     // Achievements with results, one comma maximum per bullet.
-    [SLOT: Verimi bullets, 3 or 4, from the Verimi section of experience.md.],
+    [SLOT: Verimi bullets, usually 4 or 5, from the Verimi section of experience.md.],
   ),
 )
 
@@ -95,7 +95,7 @@
   blurb: [Pakistan's biggest marketplace for buying and selling cars covering millions of live users.],
   role: "iOS Developer",
   bullets: (
-    [SLOT: PakWheels bullets, 4 or 5, from the PakWheels section of experience.md.],
+    [SLOT: PakWheels bullets, usually 5 or 6, from the PakWheels section of experience.md.],
   ),
 )
 

@@ -52,6 +52,14 @@ Plus, any time:
 
 Shows the whole board and the single most valuable thing to do right now.
 
+And when the Obsidian vault has new feedback or documentation:
+
+```
+/vault-sync cv-quality
+```
+
+Compares `~/Desktop/Job-Hunting` with the executable pipeline and turns useful vault lessons into agent, skill, command or script rules. The vault is used as quality memory, not as a source for CV content.
+
 ## The CV, and why it looks plain
 
 `profile/cv-template.typ` is the master template. `/cv` writes a tailored `applications/<slug>/cv.typ` against it and renders straight to PDF. To re-render after hand-editing:
@@ -121,6 +129,9 @@ Names the inbox record, the scored record, the `applications/` folder, and the t
 | `letter-writer` | Cover letter, or German Anschreiben |
 | `tracker` | Owns the CSV, drafts follow-ups, calibrates the rubric |
 | `interview-prep` | Company brief and likely questions |
+| `application-review` | Reviews finished CVs and letters before they reach you |
+| `pipeline-integrity` | Verifies agent, command, skill and profile changes |
+| `vault-curator` | Syncs Obsidian vault lessons back into executable pipeline rules |
 
 ## Skills
 
@@ -133,6 +144,8 @@ Names the inbox record, the scored record, the `applications/` folder, and the t
 | `cover-letter` | Letter structure, German conventions |
 | `track-application` | Tracker schema, status transitions, follow-up cadence |
 | `interview-brief` | Research and question generation |
+| `human-voice` | Human-sounding prose rules for CV bullets, letters and follow-ups |
+| `letter-critique` | Self-critique standard for cover letters |
 
 ## What this does not do
 

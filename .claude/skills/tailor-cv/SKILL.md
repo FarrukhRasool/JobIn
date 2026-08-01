@@ -116,6 +116,19 @@ The third pair is the clearest case. Same job, same year, same person. One reads
 
 **The "anyone" test.** Could any competent iOS developer with the same job title write this exact sentence? If yes, it is not evidence, it is a job title restated. `Migrated BARMER and the Verimi Wallet from UIKit to SwiftUI` survives this, because most people migrated one app or none. `Designed, tested and shipped features` does not survive it.
 
+### Senior iOS engineer pass
+
+Run this pass after `human-voice`, not instead of it. `human-voice` removes machine-sounding prose. This pass checks whether the sentence is technically credible.
+
+Every professional bullet must sound like it could be said by a senior iOS developer in an interview. That means:
+
+- The technology is used in the right relationship. `async/await` is a concurrency model, not a client. SwiftUI is a UI framework, not evidence of backend work.
+- The ownership is clear. `Own`, `led`, `introduced`, `automated`, `migrated`, and `built` are useful only when the source material supports that level of responsibility.
+- The hard part is visible. For Farrukh, that often means one SDK consumed by two clients, a migration inside a live app, build systems other developers depend on, or a performance number.
+- The sentence would not embarrass him if a senior iOS engineer asked one follow-up question.
+
+If a bullet passes the ATS keyword check but fails this pass, it fails the CV. Rewrite it from `profile/experience.md` until the engineering claim is precise.
+
 **Verbs to stop using:** `Worked on`, `Developed`, `Involved in`, `Helped`, `Participated in`, `Responsible for`, `Assisted`, `Contributed to`, `Collaborated on`, `Utilised`, `Leveraged`.
 
 ### Rhythm
@@ -131,6 +144,25 @@ Right now the master carries only one hard number, the 40% build-performance imp
 ## Prioritise relevant experience
 
 Both the ATS and the recruiter weight relevant professional experience most heavily. Order and emphasise accordingly. The most relevant role and the most relevant bullets within it come first.
+
+## Experience section balance and available space
+
+Tailoring means choosing the lead evidence, not shrinking a paid-employment section to only exact keyword matches. If the posting has three direct matches from Verimi, those three lead the Verimi section. They are not the whole section if the page has room.
+
+A strong one-page CV should usually carry **9 to 11 professional experience bullets** before education:
+
+- **Verimi:** normally 4 to 5 bullets
+- **PakWheels:** normally 5 to 6 bullets
+
+The sections do not need equal length, but neither employer should look thin unless the page physically cannot fit more. Use this order inside each employer:
+
+1. Direct matches to the posting's responsibilities and requirements
+2. Adjacent achievements that strengthen the same hiring argument
+3. Broad senior signals that increase trust, such as mentoring, code reviews, CI/CD, migrations, crash rate, performance or SDK ownership
+
+For example, a posting may only ask for SwiftUI, UIKit and CI/CD. That does not mean the CV should show only three bullets. Add the Objective-C to Swift migration, crash-free score, SPM build improvement or SDK work where they strengthen the picture of a senior iOS engineer who can own production systems.
+
+Do not pad with irrelevant technologies. Fill the page with the best true evidence from the same track and employer, ordered by relevance.
 
 ## The three-way test
 
@@ -310,9 +342,10 @@ The blank-looking page is the dangerous one. Page two has no navy panel, so whit
 
 More than about 12 mm free at the foot means the page is wasted. The checker says `UNDERFILL`. Add in this order until it reports `fit ok`:
 
-1. **Education bullets.** Cheapest and safest. All six M.Sc. bullets, then Bachelors ones from `education.md`
-2. **An experience bullet** cut earlier for space, from `experience.md`
-3. **A skills row**, only if the sidebar is visibly shorter than the main column
+1. **Professional experience bullets until both employers look substantial.** Bring Verimi to 4 or 5 bullets and PakWheels to 5 or 6 where the source material supports it.
+2. **Adjacent achievements from `profile/experience.md`**, especially cross-cutting themes that strengthen the chosen track even if they are not exact posting keywords.
+3. **Education bullets.** All six M.Sc. bullets, then Bachelors ones from `education.md` when the posting names those stacks or the page still needs honest content.
+4. **A skills row**, only if the sidebar is visibly shorter than the main column.
 
 Never pad with something irrelevant. If nothing genuine fits, leave the space.
 
@@ -360,6 +393,7 @@ Write alongside the CV:
 **Email used:** only if it differs from the master
 **Employment status shown:** whether the Verimi line carried the Working Student qualifier
 **Led with:** which experience and projects, and why
+**Experience balance:** Verimi bullet count, PakWheels bullet count, and how available space was used without padding
 **Cut:** what was left out, so the interview is not blindsided
 **Terminology mirrored:** which of the posting's exact terms were used, and where
 **Metrics worth adding:** bullets that would be far stronger with a real number Farrukh has not recorded. Be specific about which figure to supply

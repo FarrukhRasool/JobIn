@@ -37,9 +37,16 @@
       "TestFlight | App Store",
       "Firebase | Crashlytics",
       "A/B Testing | Feature Flags",
-      "Design Patterns | Code Reviews",
-      "Clean Code Architecture",
-      "Unit Testing | CI/CD",
+      "Design Patterns | Clean Code",
+    ))
+
+    #side-head("AI Tools Skills")
+    #side-list(pitch: 4.8mm, (
+      // Kept for an iOS posting with no AI angle, deliberately. This block is how he
+      // works, not a domain claim, and the Verimi SDD automation is employment evidence.
+      // Every other iOS application in the pipeline carries it.
+      "Claude | Codex",
+      "Sub Agents | SDD",
     ))
 
     #side-head("Languages")
@@ -61,6 +68,8 @@
     [Automated *xcframework* creation in *CI/CD*, halving *TestFlight* build time.],
     [Built a *Design Component SDK* with the design team, adopted by *Verimi Wallet* and *AOK*.],
     [Own the identity verification *SDK* that both *AOK* and *BARMER* integrate, a single API surface against two host apps with different release cycles.],
+    [Built the eID scanning and the Wallet login and registration flows on *async/await*.],
+    [Integrated the *Ausweis* SDK into the AOK identity flow and the *SealOne* SDK into Verimi Wallet.],
   ),
 )
 
@@ -75,6 +84,8 @@
     [Automated the release pipeline with *Fastlane*, shipping builds through *TestFlight* to the *App Store* faster and more reliably.],
     [Ran *A/B tests* and *feature flags* through *Firebase*, measuring lead conversion rate between variants to guide product decisions.],
     [Held a crash-free user score above *99%* across two production apps, *Classified* and *Dealers*.],
+    [Cut app launch time by *20%*.],
+    [Split *Localization*, *Assets* and the *Component Library* into separate frameworks so both apps shared one modular base.],
   ),
 )
 
@@ -89,7 +100,6 @@
     [*Deep Vision :* Image classification using CNNs and Vision transformers.],
     [*Scene Detection :* Deep Vision application built for smart home systems.],
     [*Autonomous Robot :* RosBot, autonomous maze navigation using SLAM.],
-    [*Agent-Based Modeling :* Multiagent system for studying emergent behaviour from the interactions between agents.],
   ),
 )
 

@@ -21,6 +21,7 @@ AI_WORDS = [
     "enhance", "underscore", "testament", "vibrant", "pivotal", "robust", "seamless",
     "cutting-edge", "not just", "excited to", "spearhead", "foster", "in today's",
     "landscape", "intricate", "garner", "interplay", "tapestry", "crucial",
+    "high-impact", "significantly",
 ]
 
 # Phrases that mean the posting will TEACH this, so it is not a gap worth naming.
@@ -47,6 +48,18 @@ def sentences(text):
 def cv_bullets(typ):
     return [re.sub(r"\*([^*]+)\*", r"\1", b)
             for b in re.findall(r"^\s*\[(.+?)\],\s*$", typ, re.M)]
+
+
+def entry_bullet_counts(typ):
+    entries = []
+    for m in re.finditer(r"#entry\((.*?)(?=\n#entry\(|\n#main-head\(|\Z)", typ, re.S):
+        block = m.group(1)
+        org = re.search(r'org:\s*"([^"]+)"', block)
+        if not org:
+            continue
+        count = len(re.findall(r"^\s*\[.+?\],\s*$", block, re.M))
+        entries.append((org.group(1), count))
+    return entries
 
 
 def check_letter(text):
@@ -89,6 +102,8 @@ def check_cv(typ):
         for w in AI_WORDS:
             if w in b.lower():
                 fail("ai-vocab", f"'{w}' in bullet: {b[:48]}")
+        if re.search(r"^\s*(Developed|Worked on|Participated in|Contributed to|Responsible for)\b", b, re.I):
+            warn("weak-verb", f"bullet starts like a responsibility, not an achievement: {b[:54]}")
     # near-duplicate bullets, the PakWheels modularisation defect
     bl = [b for b in cv_bullets(typ) if len(b) > 45]
     boiler = {"developed", "using", "built", "application", "system", "features"}
@@ -99,6 +114,17 @@ def check_cv(typ):
             shared = a & b
             if len(shared) >= 4 and len(shared) / min(len(a), len(b)) > 0.55:
                 warn("duplicate", f"same fact twice? '{bl[i][:32]}' / '{bl[j][:32]}'")
+
+    counts = entry_bullet_counts(typ)
+    paid = [(org, n) for org, n in counts if org in {"Verimi GmbH", "PakWheels"}]
+    for org, n in paid:
+        if n < 4:
+            fail("thin-experience", f"{org} has only {n} bullets. Use adjacent achievements before leaving paid work this thin")
+    total = sum(n for _, n in paid)
+    if paid and total < 9:
+        warn("experience-balance", f"only {total} paid-experience bullets. A strong CV usually carries 9 to 11")
+    if len(paid) == 2 and abs(paid[0][1] - paid[1][1]) > 2:
+        warn("experience-balance", f"paid sections look unbalanced: {paid[0][0]} {paid[0][1]}, {paid[1][0]} {paid[1][1]}")
 
 
 def check_claims(typ, notes):
@@ -169,6 +195,8 @@ def main():
             check_gap_paragraph(letter, scored)
     if notes:
         check_claims(typ, notes)
+        if "Experience balance" not in notes:
+            warn("notes", "notes.md should record 'Experience balance' with Verimi and PakWheels bullet counts")
     if scored:
         check_jd_coverage(typ, scored)
 
