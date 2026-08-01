@@ -61,7 +61,13 @@
 
     #side-head("AI Tools Skills")
     #side-list(pitch: 4.8mm, (
-        // Drop this whole block for postings with no AI angle.
+        // KEEP THIS BLOCK ON IOS POSTINGS TOO. It used to say "drop this whole block for
+        // postings with no AI angle", which was wrong and caused it to be cut from the Arise
+        // CV until Farrukh asked where it had gone (2026-08-01). These rows describe how he
+        // works, not a domain claim, and the Verimi SDD automation is employment evidence.
+        // Every iOS application in the pipeline carries it: BJAK, SumUp, Jobgether, Kira,
+        // Avelios, Arise, Scalable Capital. Trim it to two rows when space is tight, do not
+        // remove it. Drop the ML rows (CNN, ViT, Deep Vision) instead, those are domain claims.
       "SLOT: AI tooling rows",
     ))
 

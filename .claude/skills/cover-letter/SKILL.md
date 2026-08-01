@@ -18,6 +18,11 @@ The template pulls the company and role from the scored record, and the contact 
 ## House style, non-negotiable
 
 - **No em dashes. No semicolons.** Standing preference.
+- **No contractions. Write every word out in full.** Farrukh's instruction, 2026-08-01. `I am` not
+  `I'm`, `I would` not `I'd`, `it is` not `it's`, `you are` not `you're`, `do not` not `don't`.
+  Possessives are unaffected: `Germany's largest health insurer` and `BARMER's TAK libraries` are
+  correct and stay. This applies to the letter, to recruiter outreach and to follow-up messages,
+  anything under this skill that a person reads.
 - Plain English. Short sentences.
 - British spelling.
 - Banned: thrilled, delighted, delve, leverage, passionate about, fast-paced, synergy, "I am writing to apply for", "not just X but Y", "As a highly motivated".

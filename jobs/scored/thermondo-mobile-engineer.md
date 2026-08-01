@@ -100,6 +100,21 @@ Original URL with tracking params: https://www.linkedin.com/jobs/view/4423117524
 
 ## Score
 
+**Total: 57 / 100 — SKIPPED BY FARRUKH, 2026-08-01. Closed.**
+
+> He was offered this one explicitly under the "volume over fit" rule in `profile/constraints.md`,
+> which would ordinarily push a 57 into the apply column, and chose to skip it anyway. That is a
+> deliberate decision on a specific posting, not a change to the volume rule.
+>
+> The reason to respect it: the gap here is **platform, not seniority**. The first requirement is
+> proficiency in Kotlin and native Android, and `profile/skills.md` records both as deliberately
+> absent rather than merely unevidenced. No amount of tailoring closes that honestly.
+>
+> **Do not resurface this posting.** If Kotlin or Android are ever confirmed on the profile, the
+> whole category of Android-first roles reopens, and that is the point to revisit, not this record.
+
+**Original score block follows, unchanged.**
+
 **Total: 57 / 100 — MAYBE**
 Track: ios-developer (no PRIORITY-both: the mobile side of this role is Android-first with iOS explicitly deferred, and the AI work is API-level integration of pre-defined LLM services, not on-device ML, Core ML, or a camera/sensor pipeline. That is the bar the constraints file sets for the dual-profile bonus, and this role does not clear it)
 
