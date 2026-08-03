@@ -38,7 +38,7 @@
 | Storyboards | strong | **PakWheels. He migrated them out**, to programmatic views and view controllers. Confirmed 2026-07-31 |
 | Programmatic UI | strong | Same migration, the side it moved to, then on to SwiftUI. Confirmed 2026-07-31 |
 | Legacy migration | strong | **Two separate arcs at PakWheels**: Objective-C to Swift, and Storyboards to programmatic UIKit to SwiftUI. The answer to any posting that names legacy code or an existing codebase |
-| Combine | listed | Sidebar says reactive programming, no bullet names Combine |
+| Combine | strong | Confirmed 2026-08-01 and **read from the source**. PakWheels used-car advanced search: 18 `@Published` filter dimensions bound through `sink` to a staged filter model, chips derived rather than hand-maintained, `dropFirst` to break the hydration loop. **Fully evidenced, survives an interview probe.** Use this instead of the Reactive Programming row |
 | async/await | strong | **Verimi: the eID scanning flows and the Wallet login and registration flow** |
 | Reactive Programming | strong | PakWheels bullet |
 | Accessibility | strong | The Verimi Wallet migration names it as the primary focus |
@@ -67,10 +67,11 @@
 |---|---|---|
 | Design Patterns | strong | Named in both employers' bullets |
 | MVVM | strong | StoryTeller iOS client |
+| MVC | strong | **PakWheels.** Confirmed 2026-08-01. The Storyboards codebase he migrated out of was MVC, so the migration bullet evidences it directly. Postings pairing "MVC and MVVM" are common and he now answers both |
 | SOLID Principles | listed | |
 | Clean Code Architecture | strong | PakWheels code review bullet |
 | Unit Testing | strong | Bedtime Story Teller has a real suite across api, services, integration |
-| XCTest | ask | In `tracks/ios-developer.md`, not evidenced anywhere else |
+| XCTest | strong | Confirmed 2026-08-01. Bullet in `experience.md`: "Wrote unit tests with XCTest covering business logic and view models." **Generic by design**, no employer or number attached, so it clears a keyword rather than proving depth. Read the limits note there before leaning on it |
 | Code Reviews | strong | PakWheels bullet |
 
 ## Backend and APIs
@@ -118,8 +119,8 @@
 
 | Skill | Evidence | Notes |
 |---|---|---|
-| CI/CD | strong | **Verimi: halved TestFlight build time by automating xcframework creation.** Plus PakWheels Fastlane |
-| Jenkins | ask | Added by Farrukh, no bullet evidences it |
+| CI/CD | strong | **Two independent stories.** Verimi: halved TestFlight build time by automating xcframework creation, a number. PakWheels: **built the Jenkins and Fastlane pipeline** giving every PR an installable OTA build via QR code, a mechanism with a user. Lead with PakWheels when CI/CD is a responsibility, Verimi when it wants an outcome |
+| Jenkins | strong | Confirmed 2026-08-01, up from `ask` in one step. **He built the PakWheels `PRBuild` pipeline**: per-PR staging IPA via Fastlane, OTA manifest, QR code posted to the GitHub PR and the Jira ticket. Authorship confirmed by Farrukh, so the verb is **built**, not used. Second CI story alongside Verimi. **Jenkins orchestrates, Fastlane builds**, verified from source |
 | Firebase | strong | PakWheels A/B tests and feature flags |
 | Crashlytics | strong | PakWheels held a crash-free user score above 99% |
 | App stability / crash rate | strong | **Crash-free above 99% at PakWheels.** The most-requested evidence across postings so far |
@@ -145,5 +146,39 @@ These come up repeatedly in postings and would be genuinely useful if true. **As
 **async/await was confirmed on 2026-07-30** and is now `strong`, evidenced by the eID scanning and Wallet login flows at Verimi. It had been withheld from CVs for exactly the right reason.
 
 **TensorFlow, PyTorch and Keras were confirmed by Farrukh on 2026-07-30** and moved from `ask` to `listed`. All three are evidenced by the Deep Vision project and are therefore `strong`. They pack onto one sidebar row as `TensorFlow | PyTorch | Keras`, 28 characters, which fits the roughly 32-character limit. TensorFlow had been withheld once already, on the BJAK application, where TensorFlow Lite was in their stack. That withholding was correct at the time and would not happen now.
+
+**XCTest and MVC were confirmed by Farrukh on 2026-08-01.** XCTest moved from `ask` to `strong`, via
+a deliberately generic bullet he asked for in `experience.md`. MVC is new to this file and goes straight in at `strong`, because the
+PakWheels Storyboards codebase he migrated out of was MVC and the migration bullet already carries it.
+
+Both had cost him something. XCTest was withheld from the Scalable Capital Senior record, which asks
+for "testable" code, and MVC was withheld from the Arise CV even though their sibling Senior posting
+asks for "solid knowledge of MVC and MVVM". Neither withholding would happen now.
+
+**What XCTest is and is not.** The bullet is generic on purpose, with no employer, number or suite
+structure behind it, because none was supplied. It answers a posting that asks for "testable code"
+and it is true. It will not survive an interviewer asking what he tested or how it ran in CI. If a
+posting puts testing at the centre, ask him for specifics rather than leaning on the generic line.
+
+**Jenkins and Combine were confirmed by Farrukh on 2026-08-01**, both as daily development use, while
+scoring the PAYBACK iOS posting that names Jenkins as its own responsibility bullet and Combine as a
+daily-use technology. Jenkins moved from `ask` to `listed`. Combine was already `listed` and stays there.
+
+He then confirmed **both were at PakWheels**, and pointed at the source in his private `pakwheels`
+mirror rather than leaving the bullets generic. Both were read directly, so both are `strong` on real
+evidence, not on a placeholder line.
+
+**Combine is now one of the best-evidenced entries in this file**, better than several older `strong`
+rows, because the mechanism is documented down to the `dropFirst` decision. **Jenkins is verified as a
+pipeline but not as his authorship**, and the two must not be conflated.
+
+**The lesson worth keeping: ask for the source before writing a generic bullet.** The first pass here
+produced "Used Combine for reactive data flows in day-to-day feature work", which was true, weak and
+would not have survived a follow-up question. Reading one file turned it into an exact, defensible
+claim with a number in it. Where a repo exists, read it.
+
+The cost of the old grades is on record: the PAYBACK score at 73 was held down partly by Jenkins
+sitting at `ask` with "zero evidence" and Combine at `listed`. Jenkins in particular would have been
+withheld from that CV entirely despite being real.
 
 **Two entries were removed from this list on 2026-07-30, both now confirmed.** App Store release ownership is evidenced by the PakWheels Fastlane and TestFlight work. Crash rate ownership is evidenced by the crash-free score above 99%, which had been flagged as missing on three separate applications.

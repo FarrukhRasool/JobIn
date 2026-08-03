@@ -9,13 +9,19 @@ Write to `applications/<slug>/interview-brief.md`.
 
 ## Research
 
-Cover, in this order:
+**Start by reading `jobs/research/<slug>.md`.** It already exists, it was written at step 2, and it covers the product, the stage and size, the location and work model, and the concerns. Do not research those again. Carry them across, and re-check only what could have changed since the date at the top of that file.
 
-1. **Product.** What they build and who pays for it. If you cannot say this in one sentence after researching, say so, that itself is a finding.
-2. **Stage and size.** Funding, headcount, growth or contraction.
-3. **Tech stack.** From the posting, the engineering blog, their GitHub, and job ads for adjacent roles. Other openings leak more stack detail than the one being applied for.
-4. **Recent news.** Last six months. Funding, launches, layoffs, leadership changes.
-5. **Engineering culture.** Blog, conference talks, open source. If they publish, read one post and reference it.
+That brief is deliberately shallow in two places, because at step 2 nothing read them and the research was not worth paying for. **This is where that depth gets added**, now that there is a booked interview to justify it:
+
+1. **Tech stack.** The step 2 brief caps this at 80 words from the posting and adjacent openings. Go properly now: their engineering blog, their GitHub organisation, and more of their open roles. Other openings leak more stack detail than the one being applied for.
+2. **Engineering culture.** The step 2 brief sources this from job ads and the careers page only. Go to the blog, conference talks, open source and employee review sites (Glassdoor, Kununu). If they publish, read one post and be able to reference it by name in the room.
+3. **Competitors.** Not covered at step 2 at all. Who else plays here, and how this company positions against them. Interviewers ask.
+
+Then re-check, briefly:
+
+4. **Recent news**, last six months, against what the step 2 brief recorded. Funding, launches, layoffs, leadership changes.
+
+**Carry the provenance grades across.** The five grades in `company-brief` apply here too, and `SUMMARY` is still not a source. A claim you cannot verify must not become something said out loud in an interview.
 
 ## Questions they will ask
 

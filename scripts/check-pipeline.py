@@ -84,6 +84,26 @@ RULES = [
     ("company-brief", ".claude/skills/company-brief/SKILL.md", r"SUMMARY.*not a source|not a source", "search summaries are not sources"),
     ("company-brief", ".claude/skills/company-brief/SKILL.md", r"no SUMMARY material at all", "cover-letter section bars SUMMARY"),
     ("research",    ".claude/agents/company-research.md", r"check-research\.py",      "research runs its provenance check"),
+
+    # Step 2 token budget, added 2026-08-03. /research was the most expensive step in
+    # the pipeline because the source list had no ceiling and half of it fed nothing.
+    ("research-cost", ".claude/skills/company-brief/SKILL.md", r"6 WebFetch and 4 WebSearch", "step 2 has a hard fetch ceiling"),
+    ("research-cost", ".claude/skills/company-brief/SKILL.md", r"Search first, then fetch", "search before fetching, to pick targets"),
+    ("research-cost", ".claude/skills/company-brief/SKILL.md", r"900 words is the ceiling", "brief has a length ceiling"),
+    ("research-cost", ".claude/skills/company-brief/SKILL.md", r"Deliberately not researched here", "expensive sources are named as out of scope"),
+    ("research-cost", ".claude/agents/company-research.md", r"6 WebFetch and 4 WebSearch", "the agent carries the fetch ceiling"),
+    ("research-cost", ".claude/commands/research.md", r"6 WebFetch and 4 WebSearch", "the command carries the fetch ceiling"),
+
+    # The deferral only pays off if step 8 actually picks the work up. Without these
+    # two, the deep sources are dropped at step 2 and never researched at all.
+    ("research-defer", ".claude/skills/interview-brief/SKILL.md", r"jobs/research/<slug>\.md", "step 8 reads the step 2 brief"),
+    ("research-defer", ".claude/skills/interview-brief/SKILL.md", r"Competitors", "step 8 picks up competitors, dropped at step 2"),
+    ("research-defer", ".claude/commands/prep.md", r"jobs/research/<slug>\.md", "prep builds on the step 2 brief"),
+    # The agent actually invoked at step 8 is a different file from the skill and the
+    # command. Its own checklist went stale once, silently, when the source-list cut
+    # landed everywhere except here.
+    ("research-defer", ".claude/agents/interview-prep.md", r"tech stack.*engineering culture|engineering culture.*tech stack", "the step 8 agent's own checklist still asks for the deferred depth"),
+    ("research-defer", ".claude/agents/interview-prep.md", r"competitors", "the step 8 agent's own checklist still asks for competitors"),
 ]
 
 # Files that must NOT say something. Semantic guards.
@@ -93,6 +113,11 @@ FORBIDDEN = [
     # match the TABLE ROW, not the sentence documenting that these are not tracked
     ("profile/constraints.md", r"^\|\s*(Salary expectation|Needs visa sponsorship|Work authorisation)",
      "visa or salary reintroduced as a tracked constraint"),
+    # match a NUMBERED SOURCE line, not the prose naming these as out of scope.
+    # These four are step 8's job. Back on step 2's list, the budget is meaningless.
+    (".claude/skills/company-brief/SKILL.md",
+     r"^\d+\.\s+\*\*(Engineering blog|Their GitHub organisation|Competitors)\*\*",
+     "an expensive source was put back on the step 2 list, which breaks the fetch budget"),
 ]
 
 

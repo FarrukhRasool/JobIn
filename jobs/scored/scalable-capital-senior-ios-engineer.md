@@ -76,13 +76,19 @@ UIKit, Auto Layout. iOS Platform and App Store referenced generically; no specif
 
 ## Score
 
-**Total: 87 / 100 — would read APPLY on the rubric, held as FALLBACK**
+**Total: 88 / 100 — would read APPLY on the rubric, held as FALLBACK**
+
+> **Rescored 2026-08-01, from 87.** Farrukh confirmed `XCTest`, which had been rated `ask` and cost
+> Technical fit one point. It is now `strong` in `profile/skills.md`, backed by a generic bullet in
+> `experience.md`, and usable on a CV, so the point is recovered. He also confirmed `MVC`, now
+> `strong`, which this posting does not ask for and so does not move the number. **The fallback
+> framing is unchanged.**
 Track: ios-developer
 Scored 2026-08-01, reusing `jobs/research/scalable-capital-junior-ios-engineer.md` (the same company, and that brief directly investigates this Senior requisition too). Any line in that brief graded SUMMARY was not used below.
 
 | Dimension | Score |
 |---|---|
-| Technical fit | 37/40 |
+| Technical fit | 38/40 | was 37 |
 | Seniority fit | 14/20 |
 | Track clarity | 15/15 |
 | Company fit | 12/15 |
@@ -95,7 +101,7 @@ Scored 2026-08-01, reusing `jobs/research/scalable-capital-junior-ios-engineer.m
 
 **Why this score.** The posting names only two concrete technologies, UIKit and Auto Layout, and both are strongly evidenced: UIKit across four years at both employers, Auto Layout as the layout system underneath the "Programmatic UI" migration entry. The responsibilities go further than the Junior req's and land squarely on evidence that exists but was under-used there: "own the full app lifecycle from ideation to delivery to the App Store" is answered almost verbatim by the Fastlane/TestFlight/App Store release work at PakWheels, and "treat security as first class citizen" is answered by certificate pinning on BARMER's TAK libraries plus eID scanning via the Ausweis SDK, twice. Track is clean, no AI or ML content anywhere in the posting, so `ios-developer` with no PRIORITY-both bonus. Company fit is unchanged from the Junior read, same company, same unresolved culture and work-model unknowns.
 
-*Technical fit, 37/40.* Docked 2 points because Auto Layout is not an itemised row in `skills.md`, only inferred from the "Programmatic UI" (`strong`) and BARMER UIKit-to-SwiftUI migration entries, same deduction applied to the Junior req for the same reason. Docked 1 further point because "write clean, testable... code" implies automated iOS testing, and `XCTest` is rated `ask` in `skills.md`, unconfirmed and not usable on a CV without asking first. Everything else the posting asks for, UIKit depth, security-first engineering, full release ownership, is `strong`.
+*Technical fit, 37/40.* Docked 2 points because Auto Layout is not an itemised row in `skills.md`, only inferred from the "Programmatic UI" (`strong`) and BARMER UIKit-to-SwiftUI migration entries, same deduction applied to the Junior req for the same reason. ~~Docked 1 further point because "write clean, testable... code" implies automated iOS testing, and `XCTest` is rated `ask`.~~ **Point restored 2026-08-01**, XCTest confirmed and now `strong`, evidenced by a generic bullet in `experience.md` ("Wrote unit tests with XCTest covering business logic and view models."). The bullet carries no employer or number, so it clears the "testable code" line as real CV evidence without proving depth. Everything else the posting asks for, UIKit depth, security-first engineering, full release ownership, is `strong`.
 
 *Seniority fit, 14/20.* No years figure to map onto the rubric's bands, so this is a judgement call rather than arithmetic, per the instruction not to invent a threshold. "Profound working experience" plus "be empowered to implement, improve, fix, suggest, and change anything" and "own the full app lifecycle" read as a genuine senior bar, not a title inflated over a mid-level job. Farrukh's real total is roughly four years, one of which is formally a working-student contract at Verimi even though ordinary professional postings present it as plain "iOS Developer." Placed in the same range the rubric gives an explicit "six to eight years" ask (12 to 17), not the top band, because the tenure composition is thinner than "profound" ideally wants even though the seniority signals are real. Those signals, led the Objective-C to Swift migration, built an SDK consumed separately by AOK and BARMER, mentored one junior developer, conducted hiring interviews, are genuine and were deliberately kept off the Junior CV to avoid an over-qualification read there. Here they are exactly what "profound working experience" needs to hear, which is why this lands mid-band rather than low.
 
@@ -109,7 +115,7 @@ Scored 2026-08-01, reusing `jobs/research/scalable-capital-junior-ios-engineer.m
 
 **Decision: FALLBACK, not a live application.** On the rubric alone, 87 sits in the 75-plus "Apply, tailor hard" band. It is not being recommended for application now. Per `profile/constraints.md` ("One role per company at a time", decided 2026-08-01), Farrukh applied to the Junior req at this company today, 2026-08-01, and the rule is one role per company at a time regardless of which one scores better on paper. This record exists specifically as the fallback named in that rule. **It becomes live only if the Junior application comes back rejected specifically on seniority grounds** ("we're looking for someone earlier-career", "over-qualified", or equivalent), at which point `/cv` and `/letter` can run against this record without re-scoring it. Do not treat this score as licence to apply now, and do not use it to argue the Junior choice was wrong. That choice is on record in `constraints.md` and is not being re-argued here.
 
-**Gaps.** iOS-specific automated testing (`XCTest`) is unconfirmed and cannot back the "testable code" line without asking Farrukh first. No architecture pattern (MVVM, Clean, etc.) is named in the posting, so none is being scored for or against. Beyond that, almost nothing the posting names is missing, the same as the Junior read.
+**Gaps.** ~~iOS-specific automated testing (`XCTest`) is unconfirmed.~~ **Closed 2026-08-01.** XCTest is confirmed and `strong`. A generic bullet now covers it in `experience.md`, which answers the posting's "testable code" line. It carries no employer or number, so it clears the keyword rather than proving depth. Worth having a concrete example ready for interview. No architecture pattern (MVVM, Clean, etc.) is named in the posting, so none is being scored for or against. Beyond that, almost nothing the posting names is missing, the same as the Junior read.
 
 **Risks.**
 - **Work model is UNKNOWN** for this exact posting, own ATS checked directly. Munich removes the relocation question but not the commute/hybrid question. Confirm before or during interview, not a scoring gate.

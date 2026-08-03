@@ -11,12 +11,12 @@ You prepare the user for one specific interview.
 
 1. Read the job record, the submitted `cv.typ` and `letter.md`, and `profile/projects.md`.
 2. Load the `interview-brief` skill.
-3. Read `jobs/research/<slug>.md`, written at step 2. **Extend it, do not redo it.** Refresh anything more than a few weeks old, chase its Open questions, and add interview-specific detail such as the process, the likely panel, and Glassdoor interview reports.
+3. Read `jobs/research/<slug>.md`, written at step 2. **Extend it, do not redo it.** Refresh anything more than a few weeks old, chase its Open questions, and add interview-specific detail such as the process, the likely panel, and Glassdoor interview reports. That brief was written on a tight budget and left three things thin on purpose: the tech stack, engineering culture, and competitors. This is where they get filled in properly, from the engineering blog, GitHub organisation, conference talks and employee review sites.
 4. Write to `applications/<slug>/interview-brief.md`.
 
 ## What the brief must contain
 
-**Company.** What they build, who pays them, how big, what changed recently.
+**Company.** What they build, who pays them, how big, what changed recently, the tech stack in full (blog, GitHub, other open roles, not just the posting), engineering culture (blog, conference talks, open source, employee reviews), and who their competitors are.
 
 **Technical questions they are likely to ask**, derived from the actual posting, not generic lists.
 

@@ -7,18 +7,28 @@ description: Source order and file structure for researching the company behind 
 
 Write to `jobs/research/<slug>.md`, same slug as the job record.
 
+## Budget
+
+**Hard ceiling: 6 WebFetch and 4 WebSearch for the whole brief.** Not a target, a limit. Stop when you hit it and write what you have.
+
+**Search first, then fetch.** Run the searches, read the result titles and snippets to decide which three or four pages are actually worth opening, then fetch only those. Fetching a page to find out whether it was worth fetching is the main way this step gets expensive: every page you open stays in context for the rest of the run.
+
+If you hit the ceiling with sections still thin, that is a normal outcome. Write `NOT FOUND` and move on. A brief that stopped at its budget and said so is more useful than one that spent an hour and buried the finding.
+
 ## Source order
 
-Work down this list. Do not stop at the first search.
+Four sources, in this order. This is the whole list for step 2.
 
 1. **Company website**, the About and Product pages. What they build, who buys it.
-2. **The careers page**, and specifically **their other open roles**. This is the highest-signal source most people skip. Other postings name the real stack, the team structure, who reports to whom, and whether they are scaling or backfilling.
-3. **Engineering blog**, if any. Reveals actual technical decisions and how they think.
-4. **Their GitHub organisation**, if public. Languages, activity, whether they open source anything.
-5. **News from the last 12 months.** Funding, launches, acquisitions, layoffs, leadership changes.
-6. **LinkedIn company page.** Headcount and its trend, where employees sit.
-7. **Their product itself.** For a consumer app, the App Store or Play listing gives ratings, update cadence and recent complaints. For an iOS role this is directly relevant.
-8. **Competitors**, one line on who else plays here.
+2. **The careers page**, and specifically **two or three of their other open roles**. This is the highest-signal source most people skip. Other postings name the real stack, the team structure, who reports to whom, and whether they are scaling or backfilling. Two or three is enough, do not read the whole board.
+3. **News from the last 12 months.** Funding, launches, acquisitions, layoffs, leadership changes. Search, do not fetch, unless a headline changes the picture.
+4. **Their product itself**, for a consumer app only. The App Store or Play listing gives ratings, update cadence and recent complaints. For an iOS role this is directly relevant.
+
+### Deliberately not researched here
+
+The engineering blog, their GitHub organisation, conference talks by their engineers, employee review sites (Glassdoor, Kununu), and competitors. These are the expensive sources and **nothing at step 3 or step 5 reads them.** They belong to `interview-brief` at step 8, which extends this file only for the postings that reach an interview. Do not pull them forward.
+
+The exception is a company small enough that the site says almost nothing. If sources 1 to 4 leave you unable to state the business model, one GitHub or blog fetch inside the budget is the right call.
 
 ## File structure
 
@@ -37,8 +47,10 @@ Founded, funding, headcount and direction of travel, ownership. Mark each fact
 VERIFIED or INFERRED.
 
 ## Tech stack
-What they build with. Separate what the posting states from what you found in
-their other roles, GitHub, or blog. Note the source for each.
+Short, 80 words at most. What the posting states, plus anything their other open
+roles add. Note the source for each. Nothing scores this dimension and the letter
+does not use it, so do not go hunting. `interview-brief` fills it out properly at
+step 8.
 
 ## Vision and direction
 Where they say they are going, and what the evidence suggests. Recent launches,
@@ -54,7 +66,10 @@ Office locations, remote policy, and for a foreign employer hiring into Germany,
 how employment is likely structured.
 
 ## Culture and engineering practice
-From the blog, talks, open source, and reviews. Evidence only, not vibes.
+**Triage scores this**, so it cannot be skipped. Source it from what you already
+fetched: how the other open roles are written, and what the careers page commits
+to. Evidence only, not vibes. Reading the blog, conference talks and employee
+review sites for this is step 8's job, not yours.
 
 ## For the cover letter
 Two or three specific, true, checkable details worth opening with. This is what
@@ -99,7 +114,9 @@ The check enforces this: a line containing `SUMMARY` must also say re-verify, do
 
 **Never invent** funding rounds, customer names, headcounts, or tech choices. A cover letter built on a fabricated detail fails badly and publicly.
 
-**Length follows evidence.** A well-documented scale-up may take two pages. A five-person startup with a one-page site may take five lines. Do not pad.
+**900 words is the ceiling.** Length follows evidence below that, so a five-person startup with a one-page site may take five lines and that is fine. But a well-documented scale-up does not earn three pages. The brief feeds one 15-point dimension and three sentences of a cover letter. Past 900 words it is serving nobody.
+
+The best brief in the pipeline so far is `jobgether-mobile-engineer-ios.md` at 545 words. It found the one thing that decided the application, that Jobgether is not the employer, said so in the second line, and stopped. Aim for that, not for coverage.
 
 **Recruitment agencies.** If the posting is an agency advertising an unnamed client, stop and record that. There is nothing to research and the pipeline needs to know before spending effort on tailoring.
 
@@ -107,6 +124,9 @@ The check enforces this: a line containing `SUMMARY` must also say re-verify, do
 
 ## What this feeds
 
-- `triage` scores Company fit out of 15 from the Stage, Vision, Culture and Concerns sections
-- `letter-writer` opens from the For the cover letter section
-- `interview-prep` extends this file at step 8 rather than redoing the work
+Two consumers at the time you write it, and they are narrow. Write for them and nothing else.
+
+- `triage` scores Company fit out of 15 from the **Stage, Vision, Culture and Concerns** sections. Nothing else in the file is scored
+- `letter-writer` opens from the **For the cover letter** section. It needs two or three checkable details, not a company profile
+
+A third consumer arrives much later. `interview-prep` reads this file at step 8 and researches on top of it, but only for the small number of postings that reach an interview. **Do not do step 8's work at step 2.** Depth aimed at an interview that most postings never get is the single biggest waste in this pipeline.

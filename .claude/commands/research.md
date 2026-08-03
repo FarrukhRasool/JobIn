@@ -9,11 +9,15 @@ Read `jobs/inbox/<slug>.md` for the company, role and URL. If there is no record
 
 Load the `company-brief` skill for the source order and file structure.
 
-## Go past the careers page
+## Stay inside the budget
 
-The careers page is marketing. Work the full source list in the skill, and in particular **read their other open roles**. Those leak the real stack, the team structure and whether they are scaling or backfilling, far more honestly than the posting I am applying to.
+**6 WebFetch and 4 WebSearch, maximum.** Search first, read the snippets, then open only the pages worth opening. Hitting the ceiling with thin sections is a normal outcome, write `NOT FOUND` and stop.
 
-Also check their GitHub organisation, engineering blog, news from the last twelve months, and for a consumer app the store listing, since ratings and update cadence are directly relevant to an iOS role.
+The careers page is marketing, so go past it to **two or three of their other open roles**. Those leak the real stack, the team structure and whether they are scaling or backfilling, far more honestly than the posting I am applying to. Then news from the last twelve months, and for a consumer app the store listing, since ratings and update cadence are directly relevant to an iOS role.
+
+**Do not read their GitHub, their engineering blog, conference talks, employee review sites (Glassdoor, Kununu) or competitors.** Nothing in `/score` or `/letter` reads those sections, and `/prep` covers them properly at step 8 for the roles that reach an interview.
+
+**900 words is the ceiling.** This brief feeds one 15-point dimension and three sentences of a cover letter.
 
 ## Grade your evidence
 

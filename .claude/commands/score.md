@@ -15,9 +15,14 @@ Load the `fit-score` skill for the rubric.
 2. Read `profile/skills.md` and `profile/experience.md`, plus both files in `profile/tracks/`. **Not the skeleton**, which holds only sample rows and would under-score technical fit.
 3. Score, append the score block to the record, move it to `jobs/scored/<slug>.md`.
 
-## Be harsh
+## Score honestly, apply broadly
 
-Most postings should land between 40 and 65. If everything is scoring above 75 the rubric is being applied too generously and the shortlist has stopped being a shortlist.
+The number orders the queue, it does not decide whether to apply. Per the `fit-score` skill's
+2026-08-03 recalibration and `profile/constraints.md`'s volume-over-fit instruction, a decent
+single-track posting ordinarily lands in the 80s by construction, not by generosity, so do not chase
+a high score down looking for severity that is not there. Only a hard gate failure, scoring zero, is
+a genuine skip. Do not inflate a dimension to push a total over a band boundary either, that would
+make the shortlist useless for ordering the day's work, which is the one job it has.
 
 Flag `PRIORITY-both` where the role genuinely needs AI and iOS together. On-device ML, Core ML, camera or sensor pipelines, AR, robotics with a mobile component. Those are the highest value applications available and deserve harder tailoring.
 

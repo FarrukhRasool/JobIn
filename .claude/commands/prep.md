@@ -5,7 +5,9 @@ argument-hint: <slug>
 
 Run the `interview-prep` agent for: $ARGUMENTS
 
-Read `applications/<slug>/cv.md`, `letter.md` and `notes.md`, the exact materials that were submitted, then research the company.
+Read `applications/<slug>/cv.typ`, `letter.md` and `notes.md`, the exact materials that were submitted.
+
+Then read `jobs/research/<slug>.md` and **build on it rather than starting over**. That brief was written at step 2 on a deliberately tight budget, so the product, stage, location and concerns are already there and should be carried across. It is thin on purpose in three places, and this is where they get filled in: the tech stack, the engineering culture from their blog and open source, and their competitors.
 
 Load the `interview-brief` skill.
 

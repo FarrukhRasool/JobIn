@@ -133,6 +133,68 @@ Two things make this worth leading with. It evidences **Storyboards** and **prog
 
 **Fastlane, TestFlight and App Store.** Streamlined deployment with Fastlane integration for faster, more reliable releases. This evidences Fastlane, which was previously unconfirmed, and it evidences App Store release ownership, which `tracks/ios-developer.md` was claiming without support.
 
+**Combine, on the used-car advanced search screen.** Confirmed 2026-08-01, then read from the source
+by Farrukh's direction. Usable bullet:
+
+> Built the used-car advanced search screen with Combine, binding 18 filter dimensions to a staged filter model that derived the selected-filter chips automatically.
+
+**This one is fully evidenced and survives a probe.** Read from
+`PakWheels/Classified/UsedCar/AdvanceFilters/DataModel/UsedCarAdvanceFiltersScreenData.swift` in his
+private `FarrukhRasool/pakwheels` mirror, file dated 23/08/2024, inside the PakWheels tenure. What the
+code actually does, so the claim can be defended in detail:
+
+- An `ObservableObject` screen model with **18 `@Published` filter dimensions**: location, vehicle info, price, model year, mileage, registered city, certified cars, transmission, fuel type, colour, engine capacity, assembly, body type, model category, seller type, doors, seating capacity, ad properties. Four of them are min/max range filters, the rest are single or multi-select over `OrderedSet`.
+- `setupListeners()` subscribes to all 18 projected publishers with `sink`, each writing through to a **staged local filter model** and then regenerating the selected-filter chips. **The chips are derived, not maintained at each mutation site**, which is the actual reactive win and the thing to say out loud in an interview.
+- **`.dropFirst()` on every subscription**, so hydrating the screen from the global filters via `populateLocalFilters(from:)` does not retrigger the listeners and loop. This is the sharpest detail in the file: it shows he hit the write-back feedback problem and solved it deliberately.
+- Filters are **staged and committed explicitly**. `applyFiltersAction(to:)` hands the local model to the listing screen, so nothing applies live while the user is still choosing.
+- `[weak self]` throughout with subscriptions held in a `cancellables` set.
+
+**The number 18 is exact, not rounded.** Counted from the `@Published` properties and matched against
+the 18 listeners. `isResetAlertPresented` is also `@Published` but is alert state, not a filter, so it
+is excluded. If a posting or an interviewer pushes on it, the count holds.
+
+**Name Combine, not "Reactive Programming", from here on.** The generic phrase was standing in for
+exactly this work.
+
+**Jenkins, at PakWheels. He built the pipeline.** Authorship confirmed by Farrukh on 2026-08-01, after
+the pipeline itself was read from `jenkins/PRBuild`. Usable bullet:
+
+> Built the Jenkins pipeline that turned every pull request into an installable staging build, delivered as an OTA QR code in the pull request and the Jira ticket.
+
+Variant when a posting names both tools, or names build tooling as the main ask:
+
+> Built the Jenkins and Fastlane pipeline producing a signed staging IPA per pull request, published over the air so reviewers and QA installed the branch by scanning a QR code.
+
+**What the pipeline does**, so the claim can be defended stage by stage. It guards that the build is a
+pull request and aborts otherwise, parses the Jira ticket ID out of the branch name with a regex and
+falls back to the PR number, picks the **Classified or Dealers** flavour from the branch name, calls
+**`fastlane ios build_ipa`** with scheme, configuration, certificate type and export method to produce
+a staging IPA, publishes it to a web server path keyed by ticket, writes an OTA `manifest.plist`,
+generates a QR code pointing at an `itms-services://` download-manifest URL, then posts that QR code as
+a comment on **both the GitHub PR and the Jira ticket**.
+
+**Why this is a strong fact and not just a tooling line.** It removes a manual step from every review,
+it reaches non-engineers, and the Jira half means QA and product install the branch without touching
+GitHub. That is developer-experience and release work, not scripting. It also **corroborates the
+"two apps, Classified and Dealers" claim** independently, since the pipeline branches on that flavour.
+
+**Pairs with the Verimi CI automation as a second, independent CI story.** Two employers, two
+pipelines, one of them built from scratch. For any posting that names CI/CD as a responsibility rather
+than a keyword, lead with this one, because it has a mechanism and a user, where the Verimi line has a
+number. Use both when there is room.
+
+**The Jenkins and Fastlane relationship is verified, not inferred.** An earlier note here said not to
+assert one, because nothing supplied established it. The pipeline file settles it: **Jenkins
+orchestrates and Fastlane builds.** That correction is deliberate, do not revert it.
+
+**The Jenkins and Fastlane relationship is now verified and can be stated.** An earlier note here said
+not to assert one, because nothing supplied established it. The pipeline file settles it: **Jenkins
+orchestrates and Fastlane builds.** That correction is deliberate, do not revert it.
+
+**Source note.** The mirror is private and the files carry a Confiz Solutions copyright header. Use
+these facts to describe his own work, which is ordinary CV practice. **Never quote or paste the code
+itself into a CV, a letter or a portfolio.**
+
 **20% reduction in app launch time.** A performance number on a consumer app.
 
 **Crash-free user score above 99%.** *This closes the single most-flagged gap on the profile.* Application quality ownership was named as missing on the BJAK, Kira and Dexter applications. It is the exact evidence postings ask for when they say "improve crash rate, reliability and app quality". Lead with it for any posting that mentions production quality, stability or crash rate.
@@ -165,7 +227,14 @@ Hiring and mentoring are the two clearest seniority signals available anywhere o
 
 ### Open questions
 
-**None.** Everything was answered on 2026-07-30.
+**None.** Jenkins authorship was the last one and Farrukh confirmed on 2026-08-01 that he **built** the
+`PRBuild` pipeline. Everything else was answered on 2026-07-30.
+
+**Worth noting how that one was nearly missed.** He first said only that he had "used Jenkins daily",
+which reads as a usage claim, and the repo mirror is a single squashed commit so git blame could not
+settle it. The bullet sat at usage level until he was asked directly. **Ask about authorship rather
+than inferring it from a usage phrase**, in both directions: the weaker reading would have cost him a
+real achievement here, and the stronger reading would have been a fabrication if he had only used it.
 
 **Decision, 2026-07-30: build and launch times stay as percentages.** Farrukh chose not to convert 40% and 20% into absolute numbers. Do not ask again and do not invent absolutes. Percentages are perfectly usable, and a percentage travels better across contexts than a figure that depends on the machine it was measured on.
 
@@ -184,6 +253,20 @@ The through-lines that make the two roles read as one coherent engineer rather t
 **Build and runtime performance as a deliberate practice.** TestFlight build time **halved** at Verimi. **40%** build improvement from the SPM migration at PakWheels, further reduction from modularisation, and **20%** off app launch time. Three numbers across two employers, plus CI/CD at both.
 
 **Owning quality, not just shipping features.** Crash-free above 99%, code reviews, refactoring initiatives, A/B tests and feature flags. Use this whenever a posting names reliability, crash rate or production quality.
+
+**Automated testing with XCTest.** Confirmed by Farrukh on 2026-08-01. Usable bullet:
+
+> Wrote unit tests with XCTest covering business logic and view models.
+
+**Read the limits on this one before using it.** He confirmed XCTest and asked for a plain, generic
+statement, so that is what this is. It carries **no employer, no number and no specific test suite**,
+because none was supplied and inventing one would be a fabrication. It is enough to answer a posting
+that asks for "testable code" or names XCTest, which is most iOS postings, and it is true.
+
+It is **not** enough to survive a real interview probe. If someone asks what he tested, how the
+suite was structured, or how it ran in CI, he needs his own answer. Treat this as clearing a
+keyword, not as an achievement. If a posting makes testing central, ask him for the specifics rather
+than leaning on this line.
 
 **Consumer scale under constraint.** AOK, BARMER, Classified and Dealers are all millions-of-users products. Few candidates at this level can say that four times.
 
