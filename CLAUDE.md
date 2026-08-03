@@ -62,6 +62,14 @@ Nine steps, each one command, each one agent. Run in order. `/status` any time s
   tracker/applications.csv, and rubric calibration
 ```
 
+## Orientation is one command
+
+To learn where things stand, run `python3 scripts/status.py`. It is read-only and prints the counts, the follow-up queue, anything scored but not tracked, and the health checks.
+
+**Do not rebuild that picture by crawling.** No tree walks, no listing `jobs/` and `applications/`, and no grepping the records in `jobs/scored/` to find what was decided. That crawl cost about 12k tokens a session and the script prints the same facts in forty lines. Open an individual record only when a specific question needs it, and then only that record.
+
+This applies to orientation, not to the generating steps. `/cv`, `/letter` and `/prep` still read the full research brief, the scored record and `profile/` in full. Their quality depends on the prose, and nothing here shortcuts that.
+
 ## One slug, everywhere
 
 `<company>-<role>`, lowercase, hyphenated. The same string names the inbox record, the scored record, the application folder, and the tracker `id`. Every command from step 2 on takes it as the argument.

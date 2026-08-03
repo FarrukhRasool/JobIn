@@ -52,6 +52,8 @@ Plus, any time:
 
 Shows the whole board and the single most valuable thing to do right now.
 
+It reads one script, `python3 scripts/status.py`, which you can also run yourself for the board without spending a Claude turn on it. Read-only, writes nothing. It prints the counts, the follow-up queue by due date, the health checks, and anything scored but never logged in the tracker, which is where a deliberate fallback like the Scalable Capital senior requisition would otherwise go unnoticed.
+
 And when the Obsidian vault has new feedback or documentation:
 
 ```

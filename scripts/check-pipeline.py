@@ -104,6 +104,20 @@ RULES = [
     # landed everywhere except here.
     ("research-defer", ".claude/agents/interview-prep.md", r"tech stack.*engineering culture|engineering culture.*tech stack", "the step 8 agent's own checklist still asks for the deferred depth"),
     ("research-defer", ".claude/agents/interview-prep.md", r"competitors", "the step 8 agent's own checklist still asks for competitors"),
+
+    # Orientation budget, added 2026-08-03. Working out where things stood meant
+    # crawling the tree and grepping all of jobs/scored/, about 12k tokens a
+    # session to rebuild facts that had not moved. scripts/status.py prints them
+    # instead. The saving only holds while the no-crawl instruction survives, and
+    # an instruction that quietly disappears is the exact failure this file exists
+    # to catch.
+    ("orientation", "CLAUDE.md", r"scripts/status\.py", "orientation goes through the status script"),
+    ("orientation", "CLAUDE.md", r"[Dd]o not rebuild that picture by crawling", "the no-crawl rule is stated"),
+    ("orientation", "CLAUDE.md", r"still read the full research brief", "the generating steps are exempt from the no-crawl rule"),
+    ("orientation", ".claude/commands/status.md", r"python3 scripts/status\.py", "/status calls the script"),
+    # Without this one the board is built from the tracker alone, and a scored
+    # posting held as a fallback with no tracker row becomes invisible.
+    ("orientation", ".claude/commands/status.md", r"SCORED, NOT IN TRACKER", "the reconciliation is read every time"),
 ]
 
 # Files that must NOT say something. Semantic guards.
