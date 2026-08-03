@@ -40,12 +40,14 @@
 | Legacy migration | strong | **Two separate arcs at PakWheels**: Objective-C to Swift, and Storyboards to programmatic UIKit to SwiftUI. The answer to any posting that names legacy code or an existing codebase |
 | Combine | strong | Confirmed 2026-08-01 and **read from the source**. PakWheels used-car advanced search: 18 `@Published` filter dimensions bound through `sink` to a staged filter model, chips derived rather than hand-maintained, `dropFirst` to break the hydration loop. **Fully evidenced, survives an interview probe.** Use this instead of the Reactive Programming row |
 | async/await | strong | **Verimi: the eID scanning flows and the Wallet login and registration flow** |
+| GCD | listed | **Read from source 2026-08-03**, `FarrukhRasool/pakwheels`. `DispatchQueue` across 46 files, `DispatchGroup` in 6, plus `OperationQueue` and `DispatchSemaphore`. Substantial, ordinary use throughout a codebase he worked in for two and a half years. Codebase-level evidence, not proof of authorship, so be ready to name a specific place. Answers postings that separate GCD from async/await |
 | Reactive Programming | strong | PakWheels bullet |
 | Accessibility | strong | The Verimi Wallet migration names it as the primary focus |
 | eID card scanning | strong | **AOK and Verimi Wallet, twice.** German electronic ID verification |
 | Ausweis SDK | strong | AOK identity verification flow. The official German eID SDK |
 | SealOne SDK | strong | Verimi Wallet integration |
 | Certificate pinning | strong | BARMER, on the TAK libraries. The only concrete secure-transport evidence on the profile |
+| Core Data | strong | **Read from source 2026-08-03**, `FarrukhRasool/pakwheels`. **He added the car generation selection filter**, extending the existing model with a `CarGenerations` entity keyed to model by `mid`, with a to-many into `CarVersionSpecs`. Both files dated 17/10/2023, inside his tenure. The wider layer is a seeded SQLite store with ~17 taxonomy entities. **He did not author the stack**, `CoreDataStack.swift` is dated 2016. Claim the entity and the filter, not the layer. Full note in `experience.md` |
 | UI/UX | listed | Figma portfolio link supports it |
 
 ## iOS tooling and packaging
@@ -66,6 +68,12 @@
 | Skill | Evidence | Notes |
 |---|---|---|
 | Design Patterns | strong | Named in both employers' bullets |
+| Singletons | strong | **He authored PakWheels' `UserManager`**, the user and session singleton for both apps. Confirmed and read from source 2026-08-03 |
+| Dependency injection | strong | `@Injected` property wrapper for `ProfileAPIService` in `UserManager`. Read from source 2026-08-03 |
+| Objective-C interop | strong | `@objc` methods on `UserManager` so surviving Objective-C code can call into Swift. **This is the Objective-C to Swift migration in practice**, not a claim about it |
+| Session and auth management | strong | `UserManager` again: token injection into every request, logged-in versus anonymous credential paths, full login and logout lifecycle. See `experience.md` |
+| UserDefaults | strong | Read-through caching over `UserDefaults` across roughly twenty session properties in `UserManager`. **Not secure storage**, read the caveat in `experience.md` |
+| Multi-target builds | strong | `#if !DEALERS_APP` in `UserManager`, one session layer serving both the Classified and Dealers apps |
 | MVVM | strong | StoryTeller iOS client |
 | MVC | strong | **PakWheels.** Confirmed 2026-08-01. The Storyboards codebase he migrated out of was MVC, so the migration bullet evidences it directly. Postings pairing "MVC and MVVM" are common and he now answers both |
 | SOLID Principles | listed | |
@@ -82,8 +90,11 @@
 | REST APIs | strong | BedTimeAPIs.swift integration layer |
 | JWT auth | strong | Bedtime Story Teller, bcrypt, 30-day tokens |
 | SQLAlchemy | strong | Bedtime Story Teller persistence |
-| Alamofire | strong | BedTimeAPIs.swift |
+| Alamofire | strong | BedTimeAPIs.swift. Also **the whole PakWheels networking stack**, read from source 2026-08-03: `AlamoreFireNetworkManager` behind a `NetworkManager` protocol, with `APIMediator`, interceptors and typed requestables over it |
+| URLSession | listed | **Read from source 2026-08-03. Weak, use with care.** Exactly one use in PakWheels, `URLSession.shared.dataTaskPublisher` in `ComponentsKit`'s `ImageLoader`, which is URLSession bridged into Combine for async image loading. Real but thin. PakWheels networking goes through Alamofire, not raw URLSession. Do not present URLSession as the stack he worked in |
 | WebSockets | ask | Present in StoryTeller but that file carries HeyGen's author header. **Do not claim it.** |
+| OneSignal | listed | Push identity dispatch from `UserManager` on login, through a `PushNotificationServiceInfoDispatcherFactory`. Read from source 2026-08-03 |
+| MoEngage | listed | Same dispatcher on login, plus logout event tracking from `UserManager` |
 
 ## AI and machine learning
 

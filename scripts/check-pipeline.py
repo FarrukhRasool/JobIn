@@ -118,6 +118,14 @@ RULES = [
     # Without this one the board is built from the tracker alone, and a scored
     # posting held as a fallback with no tracker row becomes invisible.
     ("orientation", ".claude/commands/status.md", r"SCORED, NOT IN TRACKER", "the reconciliation is read every time"),
+    # Established 2026-08-03, reading the private PakWheels repo. It is one squashed
+    # commit, so the only authorship signal is the `// Created by X` file header, and
+    # a generic "Created by PakWheels" header is shared by at least one colleague and
+    # spans dates both before he joined and after he left. Corroboration needs the
+    # header AND a date inside his tenure AND his own account of the feature. Without
+    # this sentence the next session is free to attribute 1,012 files to him on a
+    # string match, which is fabrication at scale.
+    ("provenance", "profile/experience.md", r"attributes nothing", "the generic-author-header guard is stated"),
 ]
 
 # Files that must NOT say something. Semantic guards.
@@ -132,6 +140,12 @@ FORBIDDEN = [
     (".claude/skills/company-brief/SKILL.md",
      r"^\d+\.\s+\*\*(Engineering blog|Their GitHub organisation|Competitors)\*\*",
      "an expensive source was put back on the step 2 list, which breaks the fetch budget"),
+    # Added 2026-08-03 on a genuine memory that the source contradicted. UserManager
+    # stores tokens in UserDefaults and a full-repo sweep found no Keychain API call
+    # anywhere. Match the GRADED TABLE ROW only, so the prose recording the removal
+    # and the "not the Keychain" caveat both stay legal.
+    ("profile/skills.md", r"^\|\s*Keychain\s*\|\s*(strong|listed)\s*\|",
+     "Keychain came back as a graded skill after the source disproved it"),
 ]
 
 

@@ -211,6 +211,54 @@ itself into a CV, a letter or a portfolio.**
 
 That last part is the valuable half. Lead conversion is the core metric of a car marketplace, so this is not "we ran experiments", it is measuring the thing the business is judged on and taking the answer into the room where decisions get made. Use it whenever a posting mentions data-informed product work, experimentation, or working with product and commercial teams.
 
+**`UserManager`, the user and session singleton. Confirmed by Farrukh 2026-08-03, read from source the same day.** `PakWheels/Utilities/Managers/UserManager/UserManager.swift`, header "Created by PakWheels on 24/08/2023", inside his tenure, and he confirmed authorship directly when asked. **This is the strongest single ownership claim available from PakWheels** and nothing on the profile carried it before today. What the file actually does:
+
+- **Single source of truth for user and session state** across both apps, roughly twenty properties: access token, Facebook access token, user id, email, display name, phone, picture, current city, dealer name and logo, dealer and agent flags, notification preferences, device and FCM tokens.
+- **Auth injection into every outbound request.** `appendTokenToPath`, `appendTokenWithApiVersion`, `appendTokenToURL` and `extraUrlParams` attach credentials, `api_version`, the OneSignal token and app version, switching between the logged-in path (`access_token`) and the anonymous path (`client_id` plus `client_secret`). The URL variant rebuilds the query properly through `URLComponents` and `URLQueryItem` rather than string concatenation.
+- **Read-through caching over `UserDefaults`.** Each property is a computed get/set over a private backing field that populates from `UserDefaults` on first read.
+- **Login and logout lifecycle.** `logInUser(using:thirdPartySignin:)` hydrates the whole session and dispatches user identity to OneSignal and MoEngage through a `PushNotificationServiceInfoDispatcherFactory`. `pwUserLogedout` tears the session down, clears the specific `UserDefaults` keys, logs the event to MoEngage and empties the cart.
+- **Dependency injection**, via an `@Injected` property wrapper for `ProfileAPIService`.
+- **Objective-C interop.** Several methods are `@objc` so the surviving Objective-C code can call them, which is direct evidence for the Objective-C to Swift migration story rather than an assertion about it.
+- **Multi-target.** `#if !DEALERS_APP` compiles a different path for the Dealers app, so one session layer serves both products.
+
+**How to use it.** This is the answer to any posting naming authentication, session management, API/token handling, singletons or shared architecture across multiple apps. Prefer it over the generic "built features for both PakWheels apps" bullet whenever the posting names any of those. Pair it with the Objective-C migration, since the `@objc` surface is the migration in practice.
+
+**One honest caveat.** The access token and the Facebook access token are stored in `UserDefaults`, not the Keychain. Do not present this file as secure-storage or security work. If a posting asks about secure credential storage, the usable framing is that he has seen this pattern in production and knows why the Keychain is the right home for it, which is a real answer without claiming Keychain experience he does not have.
+
+**Core Data, read from source 2026-08-03.** Verified in the private repo `FarrukhRasool/pakwheels`, which Farrukh pointed to when asked. The app has a substantial Core Data layer:
+
+- `PakWheels/CoreData/` with `Stack`, `Entities`, `ObjectModel` and `Seeder`
+- A seeded store: `CoreDataStack` copies a bundled `PakWheelsDB.sqlite` (plus its `-shm` and `-wal` files) into the documents directory on first run, then opens it with automatic migration
+- Roughly 17 entities: `CarMakeEntity`, `CarModelEntity`, `CarVersionEntity`, `CarGenerations`, `CarVersionSpecs`, the Active* variants, `BikeMakeEntity`, `BikeModelEntity`, `CityEntity`, `CityAreaEntity`, `CategoriesEntity`, `ServiceEntity`, `ServiceTypesEntity`, `SeenAds`, `RecentAds`
+
+**What this evidences, precisely.** It is the *reference data* behind the search filters, the make/model/version/city taxonomy that populates the filter UI, not the user's chosen filter values. That is still a real and useful answer for any posting naming Core Data or local persistence, and it connects to the advanced-search work already documented above. State it that way.
+
+**His own contribution, corroborated by the source.** He added the **car generation selection filter**, supplied 2026-08-03 and checked against the repo the same day. `CarGenerations+CoreDataClass.swift` and `CarGenerations+CoreDataProperties.swift` are both dated **17/10/2023**, inside his tenure, and the entity is shaped exactly for that feature: `gid`, `mid` keying it to a car model, `name`, `launch_year`, `close_year`, `url_slug`, and a to-many relationship into `CarVersionSpecs`. That is the model to generation to version chain a generation filter needs.
+
+**How strong that evidence is, stated honestly.** The author string on those files is the generic "PakWheels", their Xcode template name, not his own, and the repo is a single squashed commit ("Initial commit for new account", 2026-01-08), so per-file authorship cannot be proved from history. What the source does give is a dated artefact inside his employment that matches his description precisely. That is corroboration, not proof, and it is well past the bar for putting on a CV.
+
+**What it still does not evidence.** He did not build the Core Data layer itself. `CoreDataStack.swift` carries "Created by Hunaid Hassan on 01/12/2016, Copyright Confiz Solutions", six years before he joined. **Do not write a bullet claiming he designed or owns the stack.** The defensible claim is that he extended an existing Core Data model with a new entity and relationship to ship a user-facing filter.
+
+**Authorship in the PakWheels repo, and how far it can be trusted.** Established 2026-08-03. The repo is one squashed commit, so git history proves nothing. The only signal is the `// Created by X on DATE` file header, and Farrukh states that files whose header reads "Created by PakWheels", with no personal name, are his: his Xcode emitted the organisation name where colleagues' emitted their own.
+
+The header counts support that, with limits. Across 2023 and 2024, "PakWheels" (418 then 554 files) runs alongside Haider Ali (72 then 313), Muhammad Ali (72 then 51) and Sohail Nasseer (92), so colleagues demonstrably kept personal names while one author string stayed generic. 1,012 "PakWheels" files in total, concentrated in exactly his most active period.
+
+**Three reasons it is not a blanket rule, and must not be used as one:**
+
+1. Three "PakWheels" files date from **2021**, before he joined in August 2022: `ChipsFilterCell.swift`, `PillsFiltersHelper.swift` and `ChipsFilter.swift`. All three are filter UI, so the filter feature predates him and he extended it rather than created it.
+2. Twenty-nine "PakWheels" files date from **2025**, and he left in March 2025.
+3. Seven files are authored "**PakWheels Haider**", which shows at least one colleague also used an organisation-prefixed author string.
+
+**How to use this.** A generic header plus a date inside his tenure plus his own specific account of the feature is good corroboration, and that combination is what backs the `CarGenerations` entry below. A generic header **on its own** attributes nothing. Never claim a file, a count of files, or a subsystem on the header alone.
+
+**Repo-wide sweep, 2026-08-03.** The private repo was cloned and grepped in full (6,850 files) to settle the topics the SME Careers scoring flagged as unevidenced:
+
+- **GCD: real.** `DispatchQueue` in 46 files (72 uses), `DispatchGroup` in 6 (15 uses), plus `OperationQueue` and one `DispatchSemaphore`. Ordinary, widespread use.
+- **URLSession: thin.** One use in the entire codebase, `URLSession.shared.dataTaskPublisher` in `ComponentsKit`'s `ImageLoader`, bridging URLSession into Combine for async image loading. The real networking stack is Alamofire behind a `NetworkManager` protocol with `APIMediator`, interceptors and typed requestables. Do not let a CV imply he worked in raw URLSession.
+- **Instruments: cannot be settled this way, ever.** It is a profiling tool and leaves no trace in source. Neither this sweep nor any future one can confirm or deny it. If a posting puts memory profiling at the centre, ask him directly.
+
+**Keychain: claimed, then contradicted by the source. Do not use it.** On 2026-08-03 Farrukh said Keychain was used in PakWheels' `UserManager` singleton. Reading `PakWheels/Utilities/Managers/UserManager/UserManager.swift` shows the opposite: every stored value goes through `UserDefaults.standard`, including `accessToken`, `facebookAccessToken`, `userEmail`, `userId` and `userPhoneNo`. There is no Keychain call in the file and no Keychain pod in the `Podfile`. The full-repo sweep settled it: the only three matches anywhere are `GIDSignInError.hasNoAuthInKeychain`, which is a Google Sign-In SDK error case rather than Keychain use, and a `com.apple.SafariKeychain` system capability line in `project.pbxproj`. **No Keychain API is called anywhere in the codebase.** The memory was honest but wrong. **Keychain stays off the profile until there is real evidence for it.**
+
 **Code refactoring initiatives** to improve code quality and maintainability, plus **peer code reviews** promoting knowledge sharing and clean code architecture.
 
 **Hiring.** Conducted interviews and represented PakWheels at university job fairs.
