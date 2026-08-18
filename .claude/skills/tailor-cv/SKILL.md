@@ -62,6 +62,20 @@ On 2026-07-31 Farrukh said the generated CVs were not up to the mark and that he
 
 **A safe CV that does not get an interview has failed.** Caution is not the goal. An accurate, specific, confident CV is the goal.
 
+### The invented-relationship defect
+
+**A bullet can be built from two individually true facts and still be a fabrication**, if it draws a causal or purposive link between them that the source never makes. This is not the same defect as inventing a fact, and it is now the more common one. Every fact in the bullet traces to `experience.md`. The connection between them does not.
+
+It happens three ways:
+
+1. **Folding two separate facts into one flow.** `experience.md`'s Verimi Wallet entry lists the login and registration flow, the SealOne SDK integration, and eID scan verification as three separate bullets. Writing "integrated the SealOne SDK for eID verification" invents a relationship the source never states. Each fact is real. The claim that one performs the other is not.
+2. **Borrowing a qualifier from one fact and attaching it to another nearby fact.** The Storyboards-to-SwiftUI migration and the Objective-C-to-Swift migration are stated as **two independent modernisation efforts**. A qualifier that describes one of them, such as doing it "without stopping delivery," must not be extended to cover the other unless the source says so for both.
+3. **A card scan folded into a registration flow that the source lists as a separate step.** Check whether the source's bullet structure already separates two facts before you merge them into one sentence. Separate bullets are separate facts unless the prose between them says otherwise.
+
+**The test:** read the exact source lines the bullet is built from. If the connective tissue, "to," "for," "so that," "which let," "as part of," is not itself something the source states, cut it. Write the two facts as two bullets, or state the one you are using plainly, rather than inventing the bridge between them.
+
+`check-style.py` cannot catch this. It is not a banned word or a missing figure, it is a false claim about how two true facts relate to each other. `application-review` question 6 is the backstop if it reaches that far. Catch it here first, by rereading the source lines before you submit the sentence, not just the fact.
+
 ### What the source files actually give you
 
 Read past the bullet lists. The prose between them carries the interpretation, and that is usually the strongest material in the file.
@@ -217,6 +231,8 @@ The skeleton's sample lines are there so it renders and the layout stays checkab
 This used to say the opposite: never copy the skeleton, assemble a `.typ` from scratch. That rule was protecting against the skeleton's sample bullets leaking into a real CV, which was a real risk, but it left the agent building a file from prose with no working example anywhere in `profile/`. On 2026-07-31 it did the predictable thing and opened `applications/sumup-ios-mobile-platform/` while tailoring for **Arise**, a consumer weight-loss app with nothing in common with an internal platform role.
 
 The samples are now `SLOT:` markers instead of realistic bullets. They cannot be mistaken for content, and the checker catches any that survive, so copying the skeleton is both safe and the point.
+
+**Write your own header comment.** The skeleton's opening comment block, `// CV SKELETON...` through `// Layout lives in cv-template.typ...`, is written for whoever is tailoring, not for the finished CV. Replace it with one short line naming the application, for example `// CV for <Company> - <Role>. Generated <date>.` Typst comments never print, so leaving the skeleton's instructions in place is not a rendering defect, but that block says the word `SLOT:` three times in its own prose, describing the mechanism rather than marking a real placeholder, and a generated CV that still carries it looks like it was never opened.
 
 Layout lives in `profile/cv-template.typ` and must not be touched. Change content only, through these functions:
 
@@ -395,7 +411,10 @@ Write alongside the CV:
 **Led with:** which experience and projects, and why
 **Experience balance:** Verimi bullet count, PakWheels bullet count, and how available space was used without padding
 **Cut:** what was left out, so the interview is not blindsided
-**Terminology mirrored:** which of the posting's exact terms were used, and where
+
+## Terminology mirrored
+Which of the posting's exact terms were used, and where. **Must be an `## ` heading, exactly this text.** `check-style.py`'s `claims` check parses from this heading to the next one to verify each backticked term actually appears in the main-column bullets. A bold label here instead of a heading has twice made the check either skip the file entirely or run against the wrong span.
+
 **Metrics worth adding:** bullets that would be far stronger with a real number Farrukh has not recorded. Be specific about which figure to supply
 **Gaps not closed:** what the posting wants that is genuinely absent
 **Page count:** confirm one page

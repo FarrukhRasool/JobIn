@@ -31,7 +31,7 @@ Finish with `python3 scripts/check-research.py <slug>`.
 
 **Do not invent funding, customers, headcount or tech choices.** A fabricated detail that reaches a cover letter fails publicly. A gap is fine, a wrong fact is not.
 
-Stop and tell me if this is a recruitment agency advertising an unnamed client, since there is nothing to research and no point tailoring yet.
+If this is a recruitment agency advertising an unnamed client, research the agency itself rather than stopping: its size, specialisms and other open roles, and whether the end client can be narrowed down or identified from them. Say so plainly in the brief, then continue to `/score`.
 
 ## Output
 

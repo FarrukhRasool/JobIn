@@ -31,10 +31,12 @@ If the posting wants something the user does not have, that is a gap for the let
 
 **Nothing unconfirmed reaches a CV.** That means anything rated `ask` in `skills.md`, anything marked `TODO` in `experience.md`, and anything marked `TODO:VERIFY` in the master or `projects.md`. Stop and ask instead.
 
+**Do not invent a relationship between two true facts.** A bullet built entirely from real facts can still be a fabrication if it draws a causal or purposive link between them that `experience.md` never states, such as folding a separately listed integration into another feature's flow, or extending a qualifier that describes one piece of work onto a second, related one nearby. See `tailor-cv`'s "invented-relationship defect" section before writing any bullet that combines more than one fact. Re-read the exact source lines, not just the fact you remember from them.
+
 ## Procedure
 
 1. Read the scored job record, `profile/cv-skeleton.typ`, `profile/skills.md`, `profile/experience.md`, `profile/education.md`, `profile/projects.md`, and the chosen track file.
-2. **Copy `profile/cv-skeleton.typ` to `applications/<slug>/cv.typ`**, then replace every `SLOT:` line with content assembled against this posting. The skeleton is your starting artefact, so you never need to see a finished CV to write one.
+2. **Copy `profile/cv-skeleton.typ` to `applications/<slug>/cv.typ`**, then replace every `SLOT:` line with content assembled against this posting, and replace the skeleton's own header comment with one line naming this application. The skeleton is your starting artefact, so you never need to see a finished CV to write one.
    `skills.md` is the pool you pick the sidebar from, with an evidence rating on every entry. `experience.md` holds the detail behind the Verimi and PakWheels bullets, including the cross-cutting themes at its foot. **Read it before rewording any employment line**, or the result will be generic.
    Also read `jobs/research/<slug>.md`. **Mirror the company's own vocabulary, not just the posting's.** The brief's Tech stack and Vision sections often name technologies and framing the posting leaves out, and those are the terms that maximise the perceived match. If the brief is missing, say so and work from the posting alone.
 3. Load the `tailor-cv` skill for structure, the Typst format, and ATS rules.

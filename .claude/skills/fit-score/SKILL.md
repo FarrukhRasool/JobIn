@@ -47,6 +47,12 @@ Overlap between the posting's required stack and what Farrukh can actually demon
 
 Also read `profile/experience.md` for what the employment actually involved, since the skill names alone understate it.
 
+**A different vendor inside a category he owns is not a gap.** Added 2026-08-03. GitLab CI against Jenkins and GitHub Actions, Swift Testing against XCTest, Bitrise against Fastlane, SwiftData against Core Data: these are the same competence with a different logo on it. Where `skills.md` shows he owns the category on real evidence, score the requirement at or near the `strong` weight, and put the specific product under **Risks** as a familiarisation item rather than under **Gaps**. Reserve Gaps for competences he genuinely lacks, not for products he has not happened to type the name of.
+
+**Absence from `skills.md` is not evidence of absence.** That file records what has been written down and confirmed. It is not the full inventory of what four years of production iOS work covers. When a posting names something plausibly inside that ground and the pool is silent, **ask before recording it as a gap**. The file's own history is the argument: XCTest, MVC, Jenkins, Combine, TensorFlow, async/await and App Store release ownership were each missing or `ask` at some point, each was real, and each cost a real application before it was confirmed.
+
+**Score the posting's own words, not an expansion of them.** A fetched record's `Tech stack` line is often the fetch model's gloss rather than the advert's text. Before scoring a gap against a named technology, check it appears in the verbatim Requirements or Responsibilities block. Michael Page, 2026-08-03: the advert said "Nutzung von Swift Concurrency" and the record's stack line expanded it to "Swift Concurrency (async/await, Actors)". Actors was scored as a gap and the advert never asked for it.
+
 - 35 to 40: core stack matches, has shipped it
 - 25 to 34: strong overlap, one or two gaps that are learnable
 - 15 to 24: adjacent, needs a real leap

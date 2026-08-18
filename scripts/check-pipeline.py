@@ -44,8 +44,9 @@ def read(rel):
 RULES = [
     ("skeleton-is-startable", ".claude/skills/tailor-cv/SKILL.md", r"Copy `profile/cv-skeleton\.typ` to",
      "tailoring starts by copying the skeleton, so no finished CV is needed as a model"),
-    ("slot-guard", "scripts/check-style.py", r'"SLOT:" in typ',
-     "an unfilled skeleton placeholder fails the style check"),
+    ("slot-guard", "scripts/check-style.py", r'SLOT_RE\s*=\s*re\.compile',
+     "an unfilled skeleton placeholder fails the style check, matched by its real "
+     "syntax, not the bare word SLOT: which the skeleton's own header comment also uses"),
     ("comma-and", "scripts/check-style.py", r'", and " in',
      "`, and` fails as a raw string, not a pronoun list"),
 
@@ -80,6 +81,17 @@ RULES = [
     ("cover-letter",".claude/skills/cover-letter/SKILL.md", r"only when the posting requires what he lacks", "gap rule is conditional"),
     ("fit-score",   ".claude/skills/fit-score/SKILL.md", r"Over-qualification",       "over-qualification cap"),
     ("fit-score",   ".claude/skills/fit-score/SKILL.md", r"profile/skills.md",        "score against the pool"),
+
+    # Added 2026-08-03 on the Michael Page rescore, where absence from skills.md and a
+    # fetch model's gloss on a stack line both got scored as gaps that were not real.
+    ("fit-score",   ".claude/skills/fit-score/SKILL.md", r"different vendor inside a category he owns", "transferable-vendor rule, a vendor swap is not a gap"),
+    ("fit-score",   ".claude/skills/fit-score/SKILL.md", r"Absence from `skills\.md` is not evidence of absence", "silence in the pool is not scored as a gap"),
+    ("fit-score",   ".claude/skills/fit-score/SKILL.md", r"Score the posting's own words, not an expansion of them", "score the verbatim requirements, not the fetch model's gloss"),
+    ("skills",      "profile/skills.md", r"\|\s*GitLab CI/CD\s*\|\s*listed\s*\|", "GitLab CI/CD confirmed and graded"),
+    ("skills",      "profile/skills.md", r"\|\s*Swift Testing\s*\|\s*listed\s*\|", "Swift Testing confirmed and graded"),
+    ("skills",      "profile/skills.md", r"\|\s*Swift Concurrency\s*\|\s*strong\s*\|", "Swift Concurrency row added as the umbrella term"),
+    ("skills",      "profile/skills.md", r"\|\s*Actors\s*\|\s*ask\s*\|", "Actors held at ask, conceptual only, never claimed on a CV"),
+
     ("constraints", "profile/constraints.md",            r"deliberately not tracked", "visa and salary not tracked"),
     ("company-brief", ".claude/skills/company-brief/SKILL.md", r"SUMMARY.*not a source|not a source", "search summaries are not sources"),
     ("company-brief", ".claude/skills/company-brief/SKILL.md", r"no SUMMARY material at all", "cover-letter section bars SUMMARY"),
@@ -126,6 +138,53 @@ RULES = [
     # this sentence the next session is free to attribute 1,012 files to him on a
     # string match, which is fabrication at scale.
     ("provenance", "profile/experience.md", r"attributes nothing", "the generic-author-header guard is stated"),
+
+    # Added 2026-08-10 on vault sync. Three of the last four CVs joined two true
+    # facts with a causal or purposive link the source never makes, not an
+    # invented fact but an invented connection, and no script can decide this.
+    ("tailor-cv", ".claude/skills/tailor-cv/SKILL.md", r"invented-relationship defect",
+     "the invented-relationship pattern is named with worked examples"),
+    ("cv-tailor", ".claude/agents/cv-tailor.md", r"invent a relationship between two true facts",
+     "cv-tailor carries the invented-relationship rule"),
+    ("review", ".claude/agents/application-review.md", r"invented relationship, not just an invented fact",
+     "review checks for invented relationships, not just invented facts"),
+
+    # Farrukh writing his own CV is a workflow application-review must also cover.
+    # Absence from skills.md is not evidence a claim is invented when he supplied it.
+    ("review", ".claude/agents/application-review.md", r"Farrukh supplied or wrote the content himself",
+     "review does not flag Farrukh's own supplied facts as invented for being absent from the pool"),
+
+    # The notes.md field check_claims parses must be an H2 heading, matching what
+    # cv-tailor actually writes in practice, or the check silently misfires.
+    ("tailor-cv", ".claude/skills/tailor-cv/SKILL.md", r"Must be an `## ` heading, exactly this text",
+     "the notes.md template specifies the heading form the checker parses"),
+    ("style", "scripts/check-style.py",
+     r"tailor-cv's own notes\.md template showed this field as a bold label",
+     "the claims check accepts both the H2 heading and the bold-label form"),
+    ("style", "scripts/check-style.py", r"skill_pool_terms",
+     "jd-coverage also checks the skill pool, not just iOS-shaped regex patterns"),
+
+    # The skeleton's own header comment says the word SLOT: three times in prose,
+    # describing the mechanism, which tripped unfilled-slot on a CV where every
+    # real slot had been filled.
+    ("tailor-cv", ".claude/skills/tailor-cv/SKILL.md", r"Write your own header comment",
+     "cv-tailor replaces the skeleton's instructional header rather than copying it verbatim"),
+
+    # The narrow, defensible part of the check-fit.py sidebar-overflow fix: the
+    # light-ink probe must not scan past the sidebar's own column, or a blank
+    # page two anywhere in that span reads as a sidebar overflow.
+    ("fit", "scripts/check-fit.py", r"x_to_fraction",
+     "the sidebar ink probe is bounded to its own column, not the full page width"),
+
+    # Practice had already moved to researching an agency-fronted posting rather
+    # than halting, on Hire Feed, Code Compass and Oliver Bernard. The written
+    # rule still said stop in all three places it is stated. Aligned 2026-08-10.
+    ("research", ".claude/skills/company-brief/SKILL.md", r"research the agency itself",
+     "agency-fronted postings get researched, not halted"),
+    ("research", ".claude/agents/company-research.md", r"[Rr]esearch the agency itself",
+     "the research agent researches the agency rather than stopping"),
+    ("research", ".claude/commands/research.md", r"research the agency itself",
+     "the research command researches the agency rather than stopping"),
 ]
 
 # Files that must NOT say something. Semantic guards.

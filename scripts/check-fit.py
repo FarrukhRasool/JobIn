@@ -58,13 +58,22 @@ def decode_png(path):
     return w, h, nch, rows
 
 
-def last_ink_row(w, h, nch, rows, x_from_fraction, dark=True):
-    """Lowest row carrying content. dark=False finds light-on-dark, for the sidebar."""
+def last_ink_row(w, h, nch, rows, x_from_fraction, x_to_fraction=1.0, dark=True):
+    """Lowest row carrying content. dark=False finds light-on-dark, for the sidebar.
+
+    x_to_fraction bounds the probe to a column. Without it, the sidebar's
+    light-ink probe scanned from 2% of page width all the way to the page
+    edge, which is most of the main column too. A wholly blank page two
+    (255 everywhere) then passed the >120 test across that whole span, so
+    it read as SIDEBAR OVERFLOW even when nothing had overflowed there.
+    Vault Defect Register #5.
+    """
     x0 = int(w * x_from_fraction) * nch
+    x1 = int(w * x_to_fraction) * nch
     last = 0
     for y, line in enumerate(rows):
         hit = any((line[x] < 200) if dark else (line[x] > 120)
-                  for x in range(x0, w * nch, nch))
+                  for x in range(x0, x1, nch))
         if hit:
             last = y
     return last
@@ -88,8 +97,8 @@ def main():
 
         if len(pages) > 1:
             w, h, nch, rows = decode_png(pages[1])
-            main_ink = last_ink_row(w, h, nch, rows, SIDEBAR_FRACTION, dark=True)
-            side_ink = last_ink_row(w, h, nch, rows, 0.02, dark=False)
+            main_ink = last_ink_row(w, h, nch, rows, SIDEBAR_FRACTION, 1.0, dark=True)
+            side_ink = last_ink_row(w, h, nch, rows, 0.02, SIDEBAR_FRACTION, dark=False)
             print("OVERFLOW  two pages.")
             if main_ink > 0:
                 print(f"          MAIN COLUMN overflows by ~{main_ink / h * 300:.0f} mm.")
@@ -98,6 +107,10 @@ def main():
                 print("          SIDEBAR overflows. Page two has no navy panel, so this")
                 print("          text is WHITE ON WHITE and invisible. Languages goes first.")
                 print("          Cut or merge skill rows. Do NOT cut main-column content.")
+                print("          White-on-white text is optically identical to a blank page,")
+                print("          so this diagnosis cannot be fully certain from pixels alone.")
+                print("          If cutting sidebar rows does not fix it, render page two to")
+                print("          PNG and look, the main column may be the real cause.")
             sys.exit(1)
 
         w, h, nch, rows = decode_png(pages[0])

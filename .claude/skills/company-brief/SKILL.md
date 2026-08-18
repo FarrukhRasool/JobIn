@@ -118,7 +118,7 @@ The check enforces this: a line containing `SUMMARY` must also say re-verify, do
 
 The best brief in the pipeline so far is `jobgether-mobile-engineer-ios.md` at 545 words. It found the one thing that decided the application, that Jobgether is not the employer, said so in the second line, and stopped. Aim for that, not for coverage.
 
-**Recruitment agencies.** If the posting is an agency advertising an unnamed client, stop and record that. There is nothing to research and the pipeline needs to know before spending effort on tailoring.
+**Recruitment agencies.** If the posting is an agency advertising an unnamed client, research the agency itself rather than stopping: its size, specialisms, and whether its other open roles or its own job listing narrow down or reveal the end client. State plainly, high in the brief, that the agency is not the employer and the client is unnamed. This is still a complete brief, not a skipped one, since a recruiter's own credibility, size and track record are real signal for whether the eventual client is worth the effort. Continue to `/score`, where the unnamed client is scored as a Company fit deduction and a Concern, and Farrukh decides whether to proceed, usually once a client is disclosed at a first call. This is the established practice, applied to Hire Feed, Code Compass and Oliver Bernard.
 
 **Name collisions.** Confirm you have the right company via the posting's URL, location or industry before writing.
 

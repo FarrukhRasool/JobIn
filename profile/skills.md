@@ -40,6 +40,8 @@
 | Legacy migration | strong | **Two separate arcs at PakWheels**: Objective-C to Swift, and Storyboards to programmatic UIKit to SwiftUI. The answer to any posting that names legacy code or an existing codebase |
 | Combine | strong | Confirmed 2026-08-01 and **read from the source**. PakWheels used-car advanced search: 18 `@Published` filter dimensions bound through `sink` to a staged filter model, chips derived rather than hand-maintained, `dropFirst` to break the hydration loop. **Fully evidenced, survives an interview probe.** Use this instead of the Reactive Programming row |
 | async/await | strong | **Verimi: the eID scanning flows and the Wallet login and registration flow** |
+| Swift Concurrency | strong | The umbrella term postings actually use, evidenced by the async/await row above. **Prefer this row when a posting says "Swift Concurrency"**, which is common, rather than answering with async/await alone |
+| Actors | ask | **Confirmed conceptual on 2026-08-03, not hands-on.** He knows the isolation model but has not shipped `actor` types, so there is no "where it was used" answer, which is what `listed` promises. Graded `ask` deliberately: answer every posting through the Swift Concurrency row instead. If an advert names Actors in its **verbatim** requirements text, not in a fetched stack-line gloss, ask Farrukh before it goes near a CV |
 | GCD | listed | **Read from source 2026-08-03**, `FarrukhRasool/pakwheels`. `DispatchQueue` across 46 files, `DispatchGroup` in 6, plus `OperationQueue` and `DispatchSemaphore`. Substantial, ordinary use throughout a codebase he worked in for two and a half years. Codebase-level evidence, not proof of authorship, so be ready to name a specific place. Answers postings that separate GCD from async/await |
 | Reactive Programming | strong | PakWheels bullet |
 | Accessibility | strong | The Verimi Wallet migration names it as the primary focus |
@@ -76,10 +78,13 @@
 | Multi-target builds | strong | `#if !DEALERS_APP` in `UserManager`, one session layer serving both the Classified and Dealers apps |
 | MVVM | strong | StoryTeller iOS client |
 | MVC | strong | **PakWheels.** Confirmed 2026-08-01. The Storyboards codebase he migrated out of was MVC, so the migration bullet evidences it directly. Postings pairing "MVC and MVVM" are common and he now answers both |
+| VIPER | listed | **Confirmed hands-on by Farrukh on 2026-08-07.** No CV bullet or employer names it yet, so be ready to say which codebase and which module. Postings that list "MVVM, VIPER or Modular Architecture" are common and he now answers all three |
 | SOLID Principles | listed | |
 | Clean Code Architecture | strong | PakWheels code review bullet |
 | Unit Testing | strong | Bedtime Story Teller has a real suite across api, services, integration |
 | XCTest | strong | Confirmed 2026-08-01. Bullet in `experience.md`: "Wrote unit tests with XCTest covering business logic and view models." **Generic by design**, no employer or number attached, so it clears a keyword rather than proving depth. Read the limits note there before leaning on it |
+| Swift Testing | listed | **Confirmed hands-on by Farrukh on 2026-08-03.** Apple's newer framework, `@Test` and `#expect`, genuinely distinct from XCTest rather than a rename. No CV bullet evidences it yet, so be ready to name where it was used. Postings increasingly name both, and he answers both |
+| TDD | listed | **Confirmed hands-on by Farrukh on 2026-08-07.** Test-driven development as a practice, distinct from the XCTest row above, which is the framework. No CV bullet or employer names it yet, so be ready to name a feature built test-first. Pairs with the XCTest, Swift Testing and Unit Testing rows |
 | Code Reviews | strong | PakWheels bullet |
 
 ## Backend and APIs
@@ -95,6 +100,8 @@
 | WebSockets | ask | Present in StoryTeller but that file carries HeyGen's author header. **Do not claim it.** |
 | OneSignal | listed | Push identity dispatch from `UserManager` on login, through a `PushNotificationServiceInfoDispatcherFactory`. Read from source 2026-08-03 |
 | MoEngage | listed | Same dispatcher on login, plus logout event tracking from `UserManager` |
+| MERN stack | listed | **Confirmed by Farrukh on 2026-08-09.** The Online Hotel Reservation System, his Bachelor's project, already carried in `education.md` with the use-when note "The posting names React, Node or full stack". This is the only web stack anywhere on the profile |
+| React, Node.js, Express, MongoDB | listed | Same source, the MERN Bachelor's project. **Academic and dated**, October 2018 to July 2022, with no commercial web work behind it. Half weight is right. A posting asking for "strong commercial experience" as a full stack engineer is only partly answered by this, so name the stack honestly and do not imply employment. Ask Farrukh before upgrading, since four years of production work may cover more web than the file records |
 
 ## AI and machine learning
 
@@ -142,6 +149,7 @@
 | A/B testing | strong | PakWheels. Measured **lead conversion rate** between variants, and the results fed business decisions |
 | Feature flags | strong | PakWheels |
 | Git, Github | strong | |
+| GitLab CI/CD | listed | **Confirmed hands-on by Farrukh on 2026-08-03.** No CV bullet evidences it yet, so be ready to name where it was used. The transferable case is strong independently of that: he built the PakWheels Jenkins `PRBuild` pipeline end to end and works in GitHub. Same competence, different vendor |
 | Jira, Confluence | listed | Added by Farrukh |
 | Scrum, Kanban | strong | PakWheels bullet |
 | SDLC | listed | Generic, low signal. Use only when a posting names it |
@@ -165,6 +173,12 @@ PakWheels Storyboards codebase he migrated out of was MVC and the migration bull
 Both had cost him something. XCTest was withheld from the Scalable Capital Senior record, which asks
 for "testable" code, and MVC was withheld from the Arise CV even though their sibling Senior posting
 asks for "solid knowledge of MVC and MVVM". Neither withholding would happen now.
+
+**VIPER and TDD were confirmed by Farrukh on 2026-08-07** and go in at `listed`. Both were absent from this file entirely, not even `ask`, and both were flagged as unsupported on his own N26 CV draft before he confirmed them. He was right and the flagging was wrong. This file records what has been written down, and absence from it is not absence of skill, which the `fit-score` skill states in its own words. Four years of production iOS covers a great deal that nobody has typed out yet.
+
+They sit at `listed` rather than `strong` only because no bullet, employer or project on the profile names either one yet. That is a documentation gap, not a doubt. `listed` is fully usable on a CV, the ban applies to `ask` alone. Supply a codebase and module for VIPER, or a feature built test-first for TDD, and both move to `strong`.
+
+**The standing rule this clarifies.** Never invent a fact. Facts Farrukh supplies are not invented, they are sourced, and he is the authority on his own experience. Ask him rather than recording a gap, per the memory note that silence in the skill pool is not absence of skill.
 
 **What XCTest is and is not.** The bullet is generic on purpose, with no employer, number or suite
 structure behind it, because none was supplied. It answers a posting that asks for "testable code"
@@ -191,5 +205,31 @@ claim with a number in it. Where a repo exists, read it.
 The cost of the old grades is on record: the PAYBACK score at 73 was held down partly by Jenkins
 sitting at `ask` with "zero evidence" and Combine at `listed`. Jenkins in particular would have been
 withheld from that CV entirely despite being real.
+
+**GitLab CI/CD and Swift Testing were confirmed hands-on by Farrukh on 2026-08-03**, while scoring the
+Michael Page interim posting that names both. Both go in at `listed`, real and safe to put on a CV,
+with no bullet behind them yet. **Actors was confirmed the other way**, as conceptual only, and is
+covered honestly by the new `Swift Concurrency` row rather than claimed on its own.
+
+Actors went in at `listed` first and was moved to `ask` the same day, on the integrity check's
+reading: `listed` promises "be ready to say where it was used", and for Actors there is no such
+answer. The first guardrail also read "unless a posting names Actors directly", which the fetch-gloss
+bug fixed in the same pass can defeat, since a glossed stack line can name a technology the advert
+never did. `ask` closes both holes at once. This is the only entry on this page graded down rather
+than up after a confirmation, and the reason is worth keeping: **a confirmation of the concept is not
+a confirmation of the claim.**
+
+**The correction that mattered more than the three entries.** The scorer had read their absence from
+this file as absence of the skill, and marked all three as technical gaps. Farrukh's point: this page
+records what has been written down, not what he knows, and GitLab CI against Jenkins and GitHub is a
+vendor swap inside a category he demonstrably owns, not a gap. `.claude/skills/fit-score/SKILL.md` now
+carries that rule in two parts, transferable vendors and absence-is-not-evidence, so triage asks
+rather than assuming. The Michael Page technical fit went from 34 to 38 on the rescore.
+
+**The scorer had also invented one of the gaps outright.** It scored Actors against the posting, but
+the advert says only "Nutzung von Swift Concurrency". The "(async/await, Actors)" breakdown came from
+the intake fetch model's gloss on the stack line, not from the advert's own words. The fit-score skill
+now requires checking a named technology against the verbatim requirements block before scoring a gap
+against it.
 
 **Two entries were removed from this list on 2026-07-30, both now confirmed.** App Store release ownership is evidenced by the PakWheels Fastlane and TestFlight work. Crash rate ownership is evidenced by the crash-free score above 99%, which had been flagged as missing on three separate applications.

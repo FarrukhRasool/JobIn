@@ -104,7 +104,7 @@ Names the inbox record, the scored record, the `applications/` folder, and the t
    -> 78/100, APPLY, track ai-engineer
 
 /cv acme-machine-learning-engineer
-   -> applications/acme-machine-learning-engineer/cv.md + notes.md
+   -> applications/acme-machine-learning-engineer/cv.typ + notes.md, rendered to Farrukh_Rasool_CV.pdf
    you read it
 
 /letter acme-machine-learning-engineer

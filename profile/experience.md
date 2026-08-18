@@ -288,7 +288,21 @@ real achievement here, and the stronger reading would have been a fabrication if
 
 ### Honest limits
 
-- No payments, claims or insurance processing work. A car marketplace involves transactions but nothing evidences owning payment flows.
+- **Superseded 2026-08-14.** This line previously read "No payments, claims or insurance processing work. A car marketplace involves transactions but nothing evidences owning payment flows." That is no longer true and it cost at least one application, since it was left standing while a checkout flow sat unrecorded in the source.
+
+**Checkout and payments at PakWheels. Read from the private `FarrukhRasool/pakwheels` mirror on 2026-08-07.** The AutoStore commerce surface is real and is SwiftUI throughout:
+
+- `FeaturesKit/FeaturesKit/Checkout/` holds `CheckoutDetailsView.swift`, `PaymentMethodsListView/` and `SavedPaymentMethodsSliderView/`.
+- `FeaturesKit/FeaturesKit/AutoStore/` holds `CartItemView`, `CartTotalSectionView`, `VendorCartItemsView`, `DiscountVoucherFieldView.swift` and `ShippingAddressCardView.swift`.
+- All are `public struct` with `public init`, so they are shared components consumed by other modules rather than screen-local views.
+- File headers date them 01 and 02 July 2024, inside his tenure.
+- `UserManager.pwUserLogedout` empties the cart on logout, which ties the session and auth layer directly to the commerce flow.
+
+**What this is and is not.** It is the **checkout and payment UI and flow layer**, built as reusable components. It is **not** payment rail or gateway integration, and nothing in the repo evidences that. `PaymentMethodsListView` names Jazz Cash in a `#Preview`, but preview data is placeholder and is not evidence of a gateway integration. Say "checkout and payment flow" and stop there.
+
+**Authorship.** The file headers read `Created by PakWheels`, the same generic company header that `UserManager` carries and which Farrukh confirmed as his own on 2026-08-03. He also put the checkout line on his own CV for the N26 application and sent it. Treat it as his, and ask him if a posting makes it load-bearing.
+
+- Still true: no claims or insurance processing work, and no payment rail or gateway integration.
 
 ---
 

@@ -82,11 +82,18 @@ def check_letter(text):
         warn("length", f"{n} words. Target 250 to 350")
 
 
+SLOT_RE = re.compile(r'^\s*(?:"SLOT:|\[SLOT:)')
+
+
 def check_cv(typ):
-    if "SLOT:" in typ:
-        for line in typ.splitlines():
-            if "SLOT:" in line:
-                fail("unfilled-slot", f"skeleton placeholder left in: {line.strip()[:52]}")
+    # A real placeholder is always `"SLOT: ...` (a side-list string) or
+    # `[SLOT: ...` (a bullet). The skeleton's own header comment also says
+    # the word "SLOT:" three times, in plain prose describing the mechanism,
+    # and a bare substring match flagged that prose as an unfilled slot even
+    # when every real slot had been replaced. Vault Defect Register, finding 6.
+    for line in typ.splitlines():
+        if SLOT_RE.match(line):
+            fail("unfilled-slot", f"skeleton placeholder left in: {line.strip()[:52]}")
     for raw in re.findall(r"^\s*\[(.+?)\],\s*$", typ, re.M):
         m = re.search(r"\*([^*]+)\* and \*([^*]+)\*\s+(client|app|layer|stack|code|pipeline|service)\b", raw)
         if m:
@@ -128,10 +135,21 @@ def check_cv(typ):
 
 
 def check_claims(typ, notes):
-    """notes.md asserts which terms were mirrored. Verify they are actually there."""
-    m = re.search(r"## Terminology mirrored\s*\n+(.+?)(?=\n##|\Z)", notes, re.S)
+    """notes.md asserts which terms were mirrored. Verify they are actually there.
+
+    tailor-cv's own notes.md template showed this field as a bold label,
+    `**Terminology mirrored:**`, not an H2 heading, even though most real
+    notes.md files use `## Terminology mirrored` in practice. Matching only
+    the H2 form let a bold-labelled file skip this check entirely. Accept
+    both, and accept a bold label with extra words before the colon, since
+    at least one real file reads `**Terminology mirrored from the posting
+    and research brief:**`.
+    """
+    m = re.search(r"^##\s*Terminology mirrored\s*\n+(.+?)(?=\n##\s|\Z)", notes, re.S | re.M)
     if not m:
-        warn("claims", "notes.md has no 'Terminology mirrored' section")
+        m = re.search(r"\*\*Terminology mirrored[^*\n]*\*\*:?\s*(.+?)(?=\n\*\*[A-Za-z]|\Z)", notes, re.S)
+    if not m:
+        warn("claims", "notes.md has no 'Terminology mirrored' section (## heading or **bold** label)")
         return
     claimed = re.findall(r"`([^`]+)`", m.group(1))
     if not claimed:
@@ -147,17 +165,64 @@ def check_claims(typ, notes):
         fail("claims", f"notes claims these are in main-column bullets, they are sidebar-only or absent: {missing}")
 
 
+def skill_pool_terms():
+    """Every skill name in profile/skills.md, as a growing, domain-agnostic
+    vocabulary rather than a hand-maintained per-track list. A row can name
+    several skills separated by commas, e.g. 'scikit-learn, NumPy, Pandas'."""
+    pool = ROOT / "profile" / "skills.md"
+    if not pool.exists():
+        return set()
+    text = pool.read_text()
+    names = set()
+    for row in re.findall(r"^\|\s*([^|]+?)\s*\|\s*(?:strong|listed|ask)\s*\|", text, re.M):
+        for part in row.split(","):
+            part = part.strip()
+            if len(part) > 2:
+                names.add(part)
+    return names
+
+
 def check_jd_coverage(typ, scored):
-    """Which technologies the posting names that the CV never mentions."""
+    """Which technologies the posting names that the CV never mentions.
+
+    Two term sources, unioned. Syntactic patterns catch technology-shaped
+    words (CamelCase, all-caps acronyms including plurals, a short iOS
+    list). The skill pool catches everything else Farrukh has actually
+    confirmed, in any domain, that the pattern cannot shape-match on its
+    own, such as 'Docker' or 'Kubernetes', which are ordinary-looking
+    capitalised words.
+
+    Before this, the pattern was iOS-shaped only and a `len(t) > 2` filter
+    dropped 'ML' and 'AI' outright. On an ML posting it caught nothing:
+    'GANs' failed the all-caps pattern over its trailing lowercase 's',
+    and 'Docker', 'PyTorch' and 'TensorFlow' matched no branch at all. It
+    reported clean on a CV missing diffusion models, GANs and Docker, all
+    named requirements. This does not claim full coverage either, free-text
+    term extraction by regex cannot be complete, which is exactly why
+    `application-review` question 1 checks every requirement by hand. This
+    is a mechanical pre-filter for that judgement, not a replacement for it.
+    """
     m = re.search(r"## Requirements\s*\n+(.+?)(?=\n## )", scored, re.S)
     r = re.search(r"## Responsibilities\s*\n+(.+?)(?=\n## )", scored, re.S)
     jd = (m.group(1) if m else "") + (r.group(1) if r else "")
-    terms = set(re.findall(r"\b([A-Z][A-Za-z]*(?:UI|Kit|SDK|API)|[A-Z]{2,}(?:/[A-Z]+)?|"
-                           r"Swift\w*|Fastlane|Ruby|Kotlin|Xcode|async/await)\b", jd))
+
+    SYNTACTIC = re.compile(
+        r"\b([A-Z][A-Za-z]*(?:UI|Kit|SDK|API)s?"          # SwiftUI, UIKit, SDKs, APIs
+        r"|[A-Z][a-z]+(?:[A-Z][A-Za-z0-9]*)+"              # PyTorch, TensorFlow, GraphQL
+        r"|[A-Z]{2,}s?(?:/[A-Z]+)?"                         # ML, AI, GANs, CI/CD
+        r"|Swift\w*|Fastlane|Ruby|Kotlin|Xcode|async/await)\b"
+    )
     HEADINGS = {"YOUR", "AND", "THE", "FOR", "QUALIFICATIONS", "RESPONSIBILITIES",
                 "REQUIREMENTS", "MUST", "HAVE", "NICE", "ABOUT", "BENEFITS", "TEAM",
-                "ROLE", "WHAT", "WHO", "WE", "US", "YOU"}
-    terms = {t for t in terms if len(t) > 2 and t.upper() not in HEADINGS}
+                "ROLE", "WHAT", "WHO", "WE", "US", "YOU", "OUR", "ARE", "CAN", "ALL",
+                "NEW", "ANY", "ITS", "PER", "GET", "TOP", "OWN", "JOIN", "OFFER"}
+    terms = {t for t in SYNTACTIC.findall(jd) if len(t) > 1 and t.upper() not in HEADINGS}
+
+    jd_low = jd.lower()
+    for name in skill_pool_terms():
+        if re.search(r"\b" + re.escape(name.lower()) + r"\b", jd_low):
+            terms.add(name)
+
     low = typ.lower()
     absent = sorted(t for t in terms if t.lower() not in low)
     if absent:

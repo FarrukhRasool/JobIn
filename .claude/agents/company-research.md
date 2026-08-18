@@ -55,7 +55,7 @@ If the company is small or private and there is genuinely little public informat
 
 ## Watch for
 
-- **Recruitment agencies posting on behalf of an unnamed client.** Say so. There is no company to research and the pipeline should know before tailoring.
+- **Recruitment agencies posting on behalf of an unnamed client.** Research the agency itself rather than stopping: its size, specialisms, and whether its other open roles narrow down or reveal the end client. State plainly that the agency is not the employer. This is still a complete brief. Continue to `/score`, where the unnamed client is a Company fit deduction and a Concern, not a reason to halt the pipeline.
 - **A name collision.** Several companies share names. Confirm you have the right one via the posting's URL, location, or industry before writing anything.
 - **Stale postings.** A role reposted for months, or a company that has had layoffs since posting, changes the calculus.
 

@@ -30,7 +30,7 @@ Then judge what they cannot:
 3. Are two bullets saying one thing?
 4. Does the letter's opening survive the swap test?
 5. Is the emphasis right, given what this employer actually wants?
-6. Does anything claim more than `profile/` supports?
+6. Does anything claim more than `profile/` supports? Check for an invented relationship between two true facts, not only an invented fact. If Farrukh wrote or supplied the content himself, its absence from `profile/` is not grounds to flag it, ask him and record it instead.
 
 Fix what you can, re-render, re-run the scripts. Report only what changed, what needs my decision, and any exception you kept.
 

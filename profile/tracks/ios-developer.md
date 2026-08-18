@@ -16,6 +16,13 @@ A production iOS engineer who owns shared architecture rather than one-off scree
 
 1. **`UserManager` at PakWheels**, the user and session singleton behind both the Classified and Dealers apps. Auth injection into every outbound request, switching between logged-in and anonymous credential paths, read-through caching, the full login and logout lifecycle, dependency injection, and `@objc` interop so surviving Objective-C could call into it. **The strongest single ownership claim on the profile.** Lead with it for anything naming authentication, sessions, API layers, singletons or shared architecture.
 2. **The Combine advanced search at PakWheels.** 18 `@Published` filter dimensions publishing into a staged model that derives its own chips, with a single `dropFirst` breaking the hydration loop. Fully evidenced and it survives a real interview probe. Lead with it for anything naming Combine or reactive programming.
+
+   **Write the bullet in plain words.** That vocabulary is for the interview, not for the page. `@Published`, "filter dimensions", "staged filter model" and `dropFirst()` read as noise to the recruiter who screens the CV first, and a bullet nobody finishes cannot help. Name Combine and keep the 18. Drop the rest.
+
+   > Wrong: Built the used-car advanced search screen on Combine, binding 18 `@Published` filter dimensions to a staged filter model that derives its own selected-filter chips.
+   > Right: Rebuilt the used-car advanced search on Combine, wiring 18 filter controls into a single model so the filter chips updated themselves.
+
+   The evidence is unchanged either way. It lives in `profile/experience.md` and comes out under questioning, which is where the detail earns its keep.
 3. **The Verimi identity work.** German eID card scanning on AOK and the Wallet through the official Ausweis SDK, and the identity SDK that AOK and BARMER integrate separately on release schedules Verimi does not set. Lead with it for identity, KYC, onboarding, fintech, health or regulated data.
 4. **The measured engineering numbers.** Crash-free above 99% and launch time down 20% at PakWheels, 40% build improvement from the SPM migration, TestFlight build time halved at Verimi. Use these whenever a posting names reliability, performance or build tooling.
 
